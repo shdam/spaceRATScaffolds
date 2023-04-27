@@ -1,0 +1,43 @@
+Package: spaceRATScaffolds
+Type: Package
+Title: Data package for spaceRAT
+Version: 0.99.0
+Authors@R: c(
+    person(given = "Søren Helweg",
+           family = "Dam",
+           role = c("aut", "cre"),
+           email = "sohdam@dtu.dk",
+           comment = c(ORCID = "0000-0003-0755-0016")),
+    person(given = "Xuening",
+           family = "He",
+           role = c("aut")),
+    person(given = "Frederik Otzen",
+           family = "Bagger",
+           role = c("aut")),
+    person(given = "Lars Rønn",
+           family = "Olsen",
+           role = c("aut"),
+           email = "lronn@dtu.dk")
+           )
+Description: This package includes prebuilt scaffolds for the R package
+spaceRAT.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Imports: 
+RoxygenNote: 7.2.3
+Depends: 
+    R (>= 4.2.0)
+Suggests: 
+    spaceRAT,
+    rmarkdown,
+    knitr,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+biocViews:
+    GeneExpression,
+    DifferentialExpression,
+    ImmunoOncology,
+    Transcriptomics,
+    RNASeq,
+    Data
+Config/testthat/edition: 3
