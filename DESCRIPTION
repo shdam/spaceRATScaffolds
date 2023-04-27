@@ -20,7 +20,7 @@ Authors@R: c(
            email = "lronn@dtu.dk")
            )
 Description: This package includes prebuilt scaffolds for the R package
-spaceRAT.
+    spaceRAT.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports: 
