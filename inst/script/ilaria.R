@@ -5,6 +5,7 @@ pData_ilaria <- read.csv(system.file("extdata/pData_ilaria.csv", package = "spac
 
 rownames(exprs_ilaria) <- exprs_ilaria$X
 exprs_ilaria$X <- NULL
+exprs_ilaria <- as.matrix(exprs_ilaria)
 
 rownames(pData_ilaria) <- pData_ilaria$X
 pData_ilaria$X <- NULL

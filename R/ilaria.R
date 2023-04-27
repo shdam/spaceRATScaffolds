@@ -5,7 +5,7 @@
 #' @docType data
 #' @usage data("exprs_ilaria")
 #' @format a data frame
-#' @return a data.frame
+#' @return a matrix
 #' @keywords datasets
 "exprs_ilaria"
 

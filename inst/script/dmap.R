@@ -4,6 +4,7 @@ pData_dmap <- read.csv(system.file("extdata/pData_dmap.csv", package = "spaceRAT
 
 rownames(exprs_dmap) <- exprs_dmap$X
 exprs_dmap$X <- NULL
+exprs_dmap <- as.matrix(exprs_dmap)
 
 rownames(pData_dmap) <- pData_dmap$X
 pData_dmap$X <- NULL
