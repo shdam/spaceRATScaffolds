@@ -20,25 +20,26 @@ Authors@R: c(
            email = "lronn@dtu.dk")
            )
 Description: This package includes prebuilt scaffolds for the R package
-    spaceRAT.
+    spaceRAT. It also contains example data used in spaceRAT.
+    See listScaffolds() to get a list of prebuilt scaffolds,
+    and listDatasets() for example data.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports: 
+    utils
 RoxygenNote: 7.2.3
-Depends: 
-    R (>= 4.2.0)
 Suggests: 
-    spaceRAT,
     rmarkdown,
     knitr,
+    BiocStyle,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
 biocViews:
-    GeneExpression,
-    DifferentialExpression,
-    ImmunoOncology,
-    Transcriptomics,
-    RNASeq,
-    Data
+    ExperimentData,
+    PackageTypeData
+LazyData: false
 Config/testthat/edition: 3
-LazyData: true
+URL: https://github.com/shdam/spaceRATScaffolds
+BugReports: https://github.com/shdam/spaceRATScaffolds/issues
+Depends: 
+    R (>= 4.2.0)

@@ -14,7 +14,7 @@ Kindly offered by Fred
 data("exprs_ilaria")
 }
 \value{
-a data.frame
+a matrix
 }
 \description{
 exprs_ilaria contains expression matrix of

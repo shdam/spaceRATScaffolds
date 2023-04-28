@@ -3,3 +3,4 @@
 export(listConverters)
 export(listDatasets)
 export(listScaffolds)
+importFrom(utils,data)

@@ -1,0 +1,49 @@
+---
+title: "Introduction"
+output: 
+  BiocStyle::html_document:
+    toc: true
+    toc_depth: 2
+    highlight: pygments
+author: "Søren Helweg Dam"
+date: "Last updated: `r format(Sys.Date(), '%Y.%m.%d')`"
+vignette: >
+  %\VignetteIndexEntry{Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+    collapse = TRUE,
+    comment = "#>"
+)
+```
+
+# Introduction
+
+This package contains scaffolds used for
+[spaceRAT](https://github.com/XueningHe/spaceRAT). See the package
+vignettes for instructions how to build your own scaffold
+and use the prebuilt scaffolds.
+
+The current `spaceRAT` scaffolds include:
+
+``` {r lists}
+
+library(spaceRATScaffolds)
+
+listScaffolds()
+
+listDatasets()
+
+listConverters()
+
+```
+
+
+# Session Info
+
+```{r session info}
+sessionInfo()
+```
