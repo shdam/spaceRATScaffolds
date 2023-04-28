@@ -20,13 +20,16 @@ Authors@R: c(
            email = "lronn@dtu.dk")
            )
 Description: This package includes prebuilt scaffolds for the R package
-    spaceRAT. It also contains example data used in spaceRAT.
+    spaceRAT, as well as defines the scaffoldSpace object type.
+    It also contains example data used in spaceRAT.
     See listScaffolds() to get a list of prebuilt scaffolds,
     and listDatasets() for example data.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports: 
-    utils
+    utils,
+    methods,
+    stats
 RoxygenNote: 7.2.3
 Suggests: 
     rmarkdown,

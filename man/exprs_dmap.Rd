@@ -11,7 +11,7 @@ a matrix
 Kindly offered by Fred
 }
 \usage{
-data("exprs_dmap")
+data("exprs_dmap", package = "spaceRATScaffolds")
 }
 \value{
 a matrix

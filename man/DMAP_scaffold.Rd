@@ -11,7 +11,7 @@ a scaffoldSpace
 Created from exprs_dmap
 }
 \usage{
-data("DMAP_scaffold")
+data("DMAP_scaffold", package = "spaceRATScaffolds")
 }
 \value{
 a scaffoldSpace

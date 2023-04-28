@@ -3,7 +3,7 @@
 #' @description  exprs_map records expression matrix of normal
 #' hematopoietic cells. The data is measured by microarray.
 #' @docType data
-#' @usage data("exprs_dmap")
+#' @usage data("exprs_dmap", package = "spaceRATScaffolds")
 #' @format a matrix
 #' @return a matrix
 #' @keywords datasets
@@ -14,7 +14,7 @@
 #' @description  pData_map records phenotype information
 #' corresponding to exprs_dmap.
 #' @docType data
-#' @usage data("pData_dmap")
+#' @usage data("pData_dmap", package = "spaceRATScaffolds")
 #' @format a data frame
 #' @return a data.frame
 #' @keywords datasets

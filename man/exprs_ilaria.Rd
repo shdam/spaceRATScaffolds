@@ -11,7 +11,7 @@ a data frame
 Kindly offered by Fred
 }
 \usage{
-data("exprs_ilaria")
+data("exprs_ilaria", package = "spaceRATScaffolds")
 }
 \value{
 a matrix

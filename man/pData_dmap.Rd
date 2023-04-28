@@ -11,7 +11,7 @@ a data frame
 Kindly offered by Fred
 }
 \usage{
-data("pData_dmap")
+data("pData_dmap", package = "spaceRATScaffolds")
 }
 \value{
 a data.frame

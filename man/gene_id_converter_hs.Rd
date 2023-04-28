@@ -11,7 +11,7 @@ a data frame
 downloaded from biomaRt
 }
 \usage{
-data("gene_id_converter_hs")
+data("gene_id_converter_hs", package = "spaceRATScaffolds")
 }
 \value{
 a data.frame

@@ -3,7 +3,7 @@
 #' @description exprs_ilaria contains expression matrix of
 #' Acute Myeloid Leukemia of erythroid subtype.
 #' @docType data
-#' @usage data("exprs_ilaria")
+#' @usage data("exprs_ilaria", package = "spaceRATScaffolds")
 #' @format a data frame
 #' @return a matrix
 #' @keywords datasets
@@ -15,7 +15,7 @@
 #' @description pData_ilaria contains phenotype
 #' data corresponding to exprs_ilaria
 #' @docType data
-#' @usage data("pData_ilaria")
+#' @usage data("pData_ilaria", package = "spaceRATScaffolds")
 #' @format a data frame
 #' @return a data.frame
 #' @keywords datasets
