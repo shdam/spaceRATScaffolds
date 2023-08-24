@@ -1,5 +1,6 @@
 # spaceRATScaffolds 0.99.0
 
+* Revamp scaffolds to be lists instead of their own data type
 * Prep for Bioc submission.
 * Include DMAP scaffold.
 * Include DMAP and Ilaria example data.

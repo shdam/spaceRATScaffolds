@@ -19,12 +19,25 @@ This package contains scaffolds used for
 [spaceRAT](https://github.com/XueningHe/spaceRAT). 
 See the package vignettes for instructions how to build and use the scaffolds.
 
+## Installation
 
+Install from GitHub
+
+``` {r, eval = FALSE}
+# Install using remotes
+# install.packages("remotes")
+remotes::install_github("shdam/spaceRATScaffolds", build_vignettes = TRUE)
+```
+
+
+## Usage
+
+This is a data package.
 The current `spaceRAT` scaffolds include:
 
 ```{r scaffolds}
 
-library(spaceRATScaffolds)
+library("spaceRATScaffolds")
 
 listScaffolds()
 
@@ -32,3 +45,9 @@ listDatasets()
 
 listConverters()
 ```
+
+
+## Report issues
+
+If you have any issues or questions regarding the use of `spaceRATScaffolds`, please do not hesitate to raise an issue on GitHub.
+In this way, others may also benefit from the answers and discussions.

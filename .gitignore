@@ -7,3 +7,9 @@
 inst*
 doc*
 /Meta/
+data/GTEX*
+inst/extdata/gtex*
+data/TCGA*
+inst/extdata/tcga*
+
+

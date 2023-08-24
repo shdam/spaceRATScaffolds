@@ -18,6 +18,6 @@ a data.frame
 }
 \description{
 pData_ilaria contains phenotype
-data corresponding to exprs_ilaria
+data corresponding to counts_ilaria
 }
 \keyword{datasets}

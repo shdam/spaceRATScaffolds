@@ -31,7 +31,7 @@ The current `spaceRAT` scaffolds include:
 
 ``` {r lists}
 
-library(spaceRATScaffolds)
+library("spaceRATScaffolds")
 
 listScaffolds()
 
