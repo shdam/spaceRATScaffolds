@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "User Guide"
 output: 
   BiocStyle::html_document:
     toc: true
@@ -8,7 +8,7 @@ output:
 author: "Søren Helweg Dam"
 date: "Last updated: `r format(Sys.Date(), '%Y.%m.%d')`"
 vignette: >
-  %\VignetteIndexEntry{Introduction}
+  %\VignetteIndexEntry{User Guide}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

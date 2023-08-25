@@ -27,9 +27,7 @@ Description: This package includes prebuilt scaffolds for the R package
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports: 
-    utils,
-    methods,
-    stats
+    utils
 RoxygenNote: 7.2.3
 Suggests: 
     rmarkdown,
@@ -39,7 +37,8 @@ Suggests:
 VignetteBuilder: knitr
 biocViews:
     ExperimentData,
-    PackageTypeData
+    PackageTypeData,
+    ExpressionData
 LazyData: false
 Config/testthat/edition: 3
 URL: https://github.com/shdam/spaceRATScaffolds
