@@ -1,5 +1,5 @@
 #' @title Expression matrix for scaffold
-#' @source Kindly offered by Fred
+#' @source Kindly offered by Frederik Otzen Bagger
 #' @description  exprs_map records expression matrix of normal
 #' hematopoietic cells. The data is measured by microarray.
 #' @docType data
@@ -10,7 +10,7 @@
 "exprs_dmap"
 
 #' @title Phenotype data for scaffold
-#' @source Kindly offered by Fred
+#' @source Kindly offered by Frederik Otzen Bagger
 #' @description  pData_map records phenotype information
 #' corresponding to exprs_dmap.
 #' @docType data
