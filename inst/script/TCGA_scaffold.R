@@ -11,7 +11,7 @@ TCGA_scaffold <- buildScaffold(
     object = tcga_counts_scaffold,
     pheno_scaffold = tcga_pheno_scaffold,
     colname = colname,
-    data = "logged",
+    data = "exprs",
     classes = NULL,
     pval_cutoff = 0.05,
     lfc_cutoff = 2,

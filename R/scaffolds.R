@@ -21,7 +21,7 @@ listScaffolds <- function(){
 listDatasets <- function(){
     data_list <- as.character(
         utils::data(package = "spaceRATScaffolds")$results[,"Item"])
-    data_list[grepl("exprs", data_list) | grepl("pData", data_list)]
+    data_list[grepl("counts", data_list) | grepl("exprs", data_list) | grepl("pData", data_list)]
 }
 
 #' List available ID converters
