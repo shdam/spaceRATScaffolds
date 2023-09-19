@@ -29,7 +29,7 @@ listScaffolds()
 #> [1] "DMAP_scaffold"
 
 listDatasets()
-#> [1] "exprs_dmap"   "exprs_ilaria" "pData_dmap"   "pData_ilaria"
+#> [1] "DMAP_exprs"    "DMAP_pData"    "ilaria_counts" "ilaria_pData"
 
 listConverters()
 #> [1] "gene_id_converter_hs" "gene_id_converter_mm"

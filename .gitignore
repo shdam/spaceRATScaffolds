@@ -4,11 +4,8 @@
 .Ruserdata
 *.DS_Store
 *.Rproj
-/inst*
-doc*
 /Meta/
 data/GTEX*
-inst/extdata/gtex*
+inst/extdata
 data/TCGA*
-inst/extdata/tcga*
 /doc/
