@@ -1,14 +1,14 @@
 ## code to prepare `GTEX_scaffold` dataset goes here
 library(spaceRAT)
 
-exprs_scaffold <- readr::read_csv("inst/extdata/gtex_representativeSetLog2cpm.csv")#, package = "spaceRATScaffolds"))
-pheno_scaffold <- readr::read_csv(system.file("extdata/gtex_representativeSet_metadata.csv", package = "spaceRATScaffolds"))
+gtex_exprs_scaffold <- readr::read_csv("inst/extdata/gtex_representativeSetLog2cpm.csv")
+gtex_pheno_scaffold <- readr::read_csv("inst/extdata/gtex_representativeSet_metadata.csv")
 
 colname <- "gtex.smts"
 
 GTEX_scaffold <- buildScaffold(
-    object = exprs_scaffold,
-    pheno = pheno_scaffold,
+    object = gtex_exprs_scaffold,
+    pheno = gtex_pheno_scaffold,
     colname = colname,
     data = "exprs",
     classes = NULL,

@@ -1,6 +1,6 @@
 
-DMAP_exprs <- read.csv(system.file("extdata/exprs_dmap.csv", package = "spaceRATScaffolds"))
-DMAP_pData <- read.csv(system.file("extdata/pData_dmap.csv", package = "spaceRATScaffolds"))
+DMAP_exprs <- read.csv("inst/extdata/exprs_dmap.csv")
+DMAP_pData <- read.csv("inst/extdata/pData_dmap.csv")
 
 rownames(DMAP_exprs) <- DMAP_exprs$X
 DMAP_exprs$X <- NULL
