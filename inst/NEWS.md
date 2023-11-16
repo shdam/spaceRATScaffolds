@@ -1,7 +1,7 @@
 # spaceRATScaffolds 0.99.1
 
 * Initiate scaffold versioning
-
+* Add `allScaffolds` object to manage scaffolds
 
 # spaceRATScaffolds 0.99.0
 

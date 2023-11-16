@@ -3,7 +3,7 @@
 library("spaceRAT")
 
 data("DMAP_exprs", "DMAP_pData", package = "spaceRATScaffolds")
-DMAPv1_scaffold <- buildScaffold(
+DMAP.v1_scaffold <- buildScaffold(
     object = DMAP_exprs,
     pheno = DMAP_pData,
     colname = "cell_types",
@@ -11,6 +11,6 @@ DMAPv1_scaffold <- buildScaffold(
     add_umap = TRUE
 )
 # plotScaffold(DMAPv1_scaffold,"DMAP PCA scaffold", dim_reduction = "PCA")
-usethis::use_data(DMAPv1_scaffold, overwrite = TRUE)
+usethis::use_data(DMAP.v1_scaffold, overwrite = TRUE)
 
 
