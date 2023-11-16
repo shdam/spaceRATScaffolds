@@ -6,9 +6,8 @@
 #' listScaffolds()
 #' @export
 listScaffolds <- function(){
-    data_list <- as.character(
-        utils::data(package = "spaceRATScaffolds")$results[,"Item"])
-    data_list[grepl("scaffold", data_list)]
+    utils::data("allScaffolds", package = "spaceRATScaffolds")
+    return(allScaffolds$fullName)
 }
 
 #' List available datasets

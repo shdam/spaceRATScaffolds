@@ -1,7 +1,7 @@
 Package: spaceRATScaffolds
 Type: Package
 Title: Data package for spaceRAT
-Version: 0.99.1
+Version: 0.99.2
 Authors@R: c(
     person(given = "Søren Helweg",
            family = "Dam",
@@ -24,10 +24,12 @@ Description: This package includes prebuilt scaffolds for the R package
     It also contains example data used in spaceRAT.
     See listScaffolds() to get a list of prebuilt scaffolds,
     and listDatasets() for example data.
+    Get scaffolds with getScaffold(scaffoldName)
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports: 
-    utils
+    utils,
+    zen4R
 RoxygenNote: 7.2.3
 Suggests: 
     rmarkdown,

@@ -46,6 +46,13 @@ listDatasets()
 listConverters()
 ```
 
+### Load data
+
+
+```{r loading}
+
+```
+
 
 ## Report issues
 

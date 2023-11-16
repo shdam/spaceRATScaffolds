@@ -1,3 +1,8 @@
+# spaceRATScaffolds 0.99.2
+
+* Put scaffold on Zenodo
+* Create `getScaffold` function that gets scaffold from Zenodo
+
 # spaceRATScaffolds 0.99.1
 
 * Initiate scaffold versioning
