@@ -55,14 +55,15 @@ for (i in rownames(gtex_group_median)) {
     }
 }
 
+gtex_small <- gtex[,unlist(sample_list)]
+gtex_small_phenoData <- gtex_phenoData[unlist(sample_list),]
+
 # Remove the no info
-gtex_small <- gtex_small[,gtex_small_phenoData$gtex.smts!="NoInfo"]
-gtex_small_phenoData <- gtex_small_phenoData[gtex_small_phenoData$gtex.smts!="NoInfo",]
+# gtex_small <- gtex[,gtex_small_phenoData$gtex.smts!="NoInfo"]
+# gtex_small_phenoData <- gtex_small_phenoData[gtex_small_phenoData$gtex.smts!="NoInfo",]
 
 
-# # now no longer log2, but just cpm, as imported.
-# gtex_small = gtex[,unlist(sample_list)]
-# gtex_small_phenoData = gtex_phenoData[unlist(sample_list),]
+
 
 write.csv(gtex_small, file="inst/extdata/gtex_representativeSetLog2cpm.csv")
 write.csv(gtex_small_phenoData, file="inst/extdata/gtex_representativeSet_metadata.csv")

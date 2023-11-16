@@ -70,7 +70,7 @@ TCGA.v1_scaffold <- buildScaffold(
     add_umap = TRUE
 )
 
-# plotScaffold(TCGA_scaffold, "TCGA PCA scaffold", dimred = "PCA")
+# plotScaffold(TCGA.v1_scaffold, "TCGA PCA scaffold", dimred = "PCA")
 
 usethis::use_data(TCGA.v1_scaffold, overwrite = TRUE)
 
