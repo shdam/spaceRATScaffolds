@@ -72,9 +72,7 @@ TCGA.v1_scaffold <- buildScaffold(
 
 # plotScaffold(TCGA.v1_scaffold, "TCGA PCA scaffold", dimred = "PCA")
 
-usethis::use_data(TCGA.v1_scaffold, overwrite = TRUE)
-
-# Move the scaffold to extdata to be put on Zenodo
-system2(c("mv", "data/TCGA.v1_scaffold.rda", "inst/extdata/"))
+# Save scaffold in extdata to be put on Zenodo
+saveRDS(TCGA.v1_scaffold, file = "inst/extdata/TCGA.v1_scaffold.rds")
 
 

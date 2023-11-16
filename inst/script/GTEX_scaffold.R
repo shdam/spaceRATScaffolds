@@ -78,7 +78,7 @@ gtex_pheno_scaffold <- readr::read_csv("inst/extdata/gtex_representativeSet_meta
 
 colname <- "gtex.smts"
 
-GTEX.v1_scaffold <- buildScaffold(
+GTEx.v1_scaffold <- buildScaffold(
     object = gtex_exprs_scaffold,
     pheno = gtex_pheno_scaffold,
     colname = colname,
@@ -93,7 +93,5 @@ GTEX.v1_scaffold <- buildScaffold(
 
 # plotScaffold(GTEX_scaffold,"GTEX PCA scaffold", dimred = "PCA")
 
-usethis::use_data(GTEX.v1_scaffold, overwrite = TRUE)
-
-# Move the scaffold to extdata to be put on Zenodo
-system2(c("mv", "data/GTEX.v1_scaffold.rda", "inst/extdata/"))
+# Save scaffold in extdata to be put on Zenodo
+saveRDS(GTEx.v1_scaffold, file = "inst/extdata/GTEx.v1_scaffold.rds")
