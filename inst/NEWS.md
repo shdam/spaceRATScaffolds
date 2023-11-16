@@ -1,3 +1,8 @@
+# spaceRATScaffolds 0.99.1
+
+* Initiate scaffold versioning
+
+
 # spaceRATScaffolds 0.99.0
 
 * Add UMAP to DMAP scaffold

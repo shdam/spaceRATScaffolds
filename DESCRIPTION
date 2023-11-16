@@ -1,7 +1,7 @@
 Package: spaceRATScaffolds
 Type: Package
 Title: Data package for spaceRAT
-Version: 0.99.0
+Version: 0.99.1
 Authors@R: c(
     person(given = "Søren Helweg",
            family = "Dam",
@@ -20,7 +20,7 @@ Authors@R: c(
            email = "lronn@dtu.dk")
            )
 Description: This package includes prebuilt scaffolds for the R package
-    spaceRAT, as well as defines the scaffoldSpace object type.
+    spaceRAT.
     It also contains example data used in spaceRAT.
     See listScaffolds() to get a list of prebuilt scaffolds,
     and listDatasets() for example data.
