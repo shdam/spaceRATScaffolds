@@ -1,5 +1,5 @@
 #' @title Expression matrix for scaffold
-#' @source Kindly offered by Frederik Otzen Bagger
+#' @source https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE24759
 #' @description  exprs_map records expression matrix of normal
 #' hematopoietic cells. The data is measured by microarray.
 #' @docType data
@@ -10,7 +10,7 @@
 "DMAP_exprs"
 
 #' @title Phenotype data for scaffold
-#' @source Kindly offered by Frederik Otzen Bagger
+#' @source https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE24759
 #' @description  pData_map records phenotype information
 #' corresponding to DMAP_exprs
 #' @docType data
@@ -20,13 +20,15 @@
 #' @keywords datasets
 "DMAP_pData"
 
-#' @title  DMAP scaffold
-#' @source Created from exprs_dmap
+#' @title  DMAP scaffold Version 1
+#' @source Created from \code{\link{DMAP_exprs}} and \code{\link{DMAP_pData}}
+#' using \code{\link{spaceRAT::buildScaffold}}
 #' @description This scaffold was build from the
-#' \code{\link{exprs_dmap}} object.
+#' \code{\link{DMAP_exprs}}and \code{\link{DMAP_pData}}
+#' using \code{\link{spaceRAT::buildScaffold}}.
 #' @docType data
-#' @usage data("DMAP_scaffold", package = "spaceRATScaffolds")
-#' @format a scaffoldSpace
-#' @return a scaffoldSpace
+#' @usage spaceRATScaffolds::loadData("DMAP")
+#' @format a scaffoldSpace list
+#' @return a scaffoldSpace list
 #' @keywords datasets
-"DMAP_scaffold"
+"DMAP.v1_scaffold"

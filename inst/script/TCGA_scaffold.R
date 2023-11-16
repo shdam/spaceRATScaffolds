@@ -8,14 +8,16 @@ library("edgeR")
 human_projects <- available_projects()
 tcga_info <- human_projects[human_projects$file_source=="tcga",]
 tcga_rse <- apply(tcga_info,1, function(x) create_rse(as.data.frame(t(x))))
-cpm <- lapply(tcga_rse, function (x) {edgeR::cpm(assay(x), log=T)} )
+cpm <- lapply(tcga_rse, function (x) {edgeR::cpm(assay(x), log=TRUE)} )
 annotation <- lapply(tcga_rse, colData)
 tcga <- Reduce(cbind, cpm)
 tcga_phenoData <- Reduce(rbind, annotation)
 
 stopifnot(all(rownames(tcga_phenoData)==colnames(tcga)))
 
-rm(counts)
+# check if this is counts or cpm...
+tcga[10000:10020, 10000:10020]
+rm(cpm)
 
 library("FNN")
 library("dplyr")
@@ -33,8 +35,8 @@ tcga_group_median <- tcga_group_median[,-1]
 sample_list = list()
 for (i in rownames(tcga_group_median)) {
     if (sum(tcga_phenoData$study==i)>20){ # require e.g. at least 20 samples per group
-        close_samples_in_class = as.vector(get.knnx(data = t(tcga[,tcga_phenoData$study==i]), query = tcga_group_median[i, ], 20)$nn.index)
-        sample_list[[i]] = colnames(tcga[,tcga_phenoData$study==i][,close_samples_in_class])
+        close_samples_in_class <- as.vector(get.knnx(data = t(tcga[,tcga_phenoData$study==i]), query = tcga_group_median[i, ], 20)$nn.index)
+        sample_list[[i]] <- colnames(tcga[,tcga_phenoData$study==i][,close_samples_in_class])
     } else {print(paste(i, 'not enough samples'))}
 }
 
@@ -48,14 +50,14 @@ rm(list=ls())
 
 # Scaffold ----
 
-library(spaceRAT)
+library("spaceRAT")
 
 tcga_exprs_scaffold <- readr::read_csv("inst/extdata/tcga_representativeSetLog2cpm.csv")
 tcga_pheno_scaffold <- readr::read_csv("inst/extdata/tcga_representativeSet_metadata.csv")
 
 colname <- "study"#"tcga.gdc_cases.project.primary_site" # tcga.gdc_cases.project.name
 
-TCGA_scaffold <- buildScaffold(
+TCGA.v1_scaffold <- buildScaffold(
     object = tcga_exprs_scaffold,
     pheno = tcga_pheno_scaffold,
     colname = colname,
@@ -64,10 +66,15 @@ TCGA_scaffold <- buildScaffold(
     pval_cutoff = 0.05,
     lfc_cutoff = 2,
     pca_scale = FALSE,
-    annotation = "ensembl_gene"
+    annotation = "ensembl_gene",
+    add_umap = TRUE
 )
 
-usethis::use_data(TCGA_scaffold, overwrite = TRUE)
+# plotScaffold(TCGA_scaffold, "TCGA PCA scaffold", dimred = "PCA")
+
+usethis::use_data(TCGA.v1_scaffold, overwrite = TRUE)
+
+# Move the scaffold to extdata to be put on Zenodo
+system2(c("mv", "data/TCGA.v1_scaffold.rda", "inst/extdata/"))
 
 
-# plotScaffold(TCGA_scaffold,"TCGA PCA scaffold", dim_reduction = "PCA")

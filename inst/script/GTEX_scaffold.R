@@ -8,12 +8,12 @@ library("edgeR")
 
 human_projects <- available_projects()
 
-gtex_info = human_projects[human_projects$file_source=="gtex",]
-gtx_rse = apply(gtex_info,1, function(x) create_rse(as.data.frame(t(x))))
-cpm = lapply(gtx_rse, function (x) {edgeR::cpm(assay(x), log=T)} )
-annotation = lapply(gtx_rse, colData)
-gtex = Reduce(cbind, cpm)
-gtex_phenoData = Reduce(rbind, annotation)
+gtex_info <- human_projects[human_projects$file_source=="gtex",]
+gtx_rse <- apply(gtex_info,1, function(x) create_rse(as.data.frame(t(x))))
+cpm <- lapply(gtx_rse, function (x) {edgeR::cpm(assay(x), log=T)} )
+annotation <- lapply(gtx_rse, colData)
+gtex <- Reduce(cbind, cpm)
+gtex_phenoData <- Reduce(rbind, annotation)
 
 stopifnot(all(rownames(gtex_phenoData)==colnames(gtex)))
 
@@ -35,29 +35,29 @@ library("dplyr")
 library("tibble")
 
 # find median in log2 cpm space
-gtex_group_median = data.frame(t(gtex), TISSUE=gtex_phenoData$gtex.smts) %>% group_by(TISSUE) %>% summarise_each(list(median)) %>% as.data.frame
+gtex_group_median <- data.frame(t(gtex), TISSUE=gtex_phenoData$gtex.smts) %>% group_by(TISSUE) %>% summarise_each(list(median)) %>% as.data.frame
 
 gtex_group_median$TISSUE[is.na(gtex_group_median$TISSUE)] = "NoInfo"
 gtex_phenoData$gtex.smtsd[is.na(gtex_phenoData$gtex.smtsd)] = "NoInfo"
 gtex_phenoData$gtex.smts[is.na(gtex_phenoData$gtex.smts)] = "NoInfo"
 
-rownames(gtex_group_median) = gtex_group_median$TISSUE
-gtex_group_median = gtex_group_median[,-1]
+rownames(gtex_group_median) <- gtex_group_median$TISSUE
+gtex_group_median <- gtex_group_median[,-1]
 
 
 
 # subset to each group, and find the closest to the centroid (of that group).  in log2 cpm space
-sample_list = list()
+sample_list <- list()
 for (i in rownames(gtex_group_median)) {
     if (sum(gtex_phenoData$gtex.smts==i)>20){ # require at least 20 samples per group
-        close_samples_in_class = as.vector(get.knnx(data = t(gtex[,gtex_phenoData$gtex.smts==i]), query = gtex_group_median[i, ], 20)$nn.index)
-        sample_list[[i]] = colnames(gtex[,gtex_phenoData$gtex.smts==i][,close_samples_in_class])
+        close_samples_in_class <- as.vector(get.knnx(data = t(gtex[,gtex_phenoData$gtex.smts==i]), query = gtex_group_median[i, ], 20)$nn.index)
+        sample_list[[i]] <- colnames(gtex[,gtex_phenoData$gtex.smts==i][,close_samples_in_class])
     }
 }
 
 # Remove the no info
-gtex_small = gtex_small[,gtex_small_phenoData$gtex.smts!="NoInfo"]
-gtex_small_phenoData = gtex_small_phenoData[gtex_small_phenoData$gtex.smts!="NoInfo",]
+gtex_small <- gtex_small[,gtex_small_phenoData$gtex.smts!="NoInfo"]
+gtex_small_phenoData <- gtex_small_phenoData[gtex_small_phenoData$gtex.smts!="NoInfo",]
 
 
 # # now no longer log2, but just cpm, as imported.
@@ -77,7 +77,7 @@ gtex_pheno_scaffold <- readr::read_csv("inst/extdata/gtex_representativeSet_meta
 
 colname <- "gtex.smts"
 
-GTEX_scaffold <- buildScaffold(
+GTEX.v1_scaffold <- buildScaffold(
     object = gtex_exprs_scaffold,
     pheno = gtex_pheno_scaffold,
     colname = colname,
@@ -86,9 +86,13 @@ GTEX_scaffold <- buildScaffold(
     pval_cutoff = 0.05,
     lfc_cutoff = 2,
     pca_scale = FALSE,
-    annotation = "ensembl_gene"
+    annotation = "ensembl_gene",
+    add_umap = TRUE
     )
 
-# plotScaffold(GTEX_scaffold,"GTEX PCA scaffold", dim_reduction = "PCA")
+# plotScaffold(GTEX_scaffold,"GTEX PCA scaffold", dimred = "PCA")
 
-usethis::use_data(GTEX_scaffold, overwrite = TRUE)
+usethis::use_data(GTEX.v1_scaffold, overwrite = TRUE)
+
+# Move the scaffold to extdata to be put on Zenodo
+system2(c("mv", "data/GTEX.v1_scaffold.rda", "inst/extdata/"))
