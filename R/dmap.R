@@ -29,4 +29,4 @@
 #' @format a scaffoldSpace
 #' @return a scaffoldSpace
 #' @keywords datasets
-"DMAP.v1_scaffold"
+"DMAP.v1"

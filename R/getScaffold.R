@@ -2,10 +2,15 @@
 #' @importFrom zen4R download_zenodo
 #' @importFrom utils data
 #' @param name Name of scaffold to get
+#' @param store Whether or not to store the scaffold for future use
 #' @param path Path to folder for storing scaffolds
 #' @param timeout Setting download timeout
 #' @export
-getScaffold <- function(name, path = "scaffolds", timeout = 120){
+getScaffold <- function(
+    name,
+    store = TRUE,
+    path = "scaffolds",
+    timeout = 120){
     # Load the allScaffolds metadata
     utils::data("allScaffolds", package = "spaceRATScaffolds")
 
@@ -26,32 +31,40 @@ getScaffold <- function(name, path = "scaffolds", timeout = 120){
 
     # Subset scaffolds
     if(in_fullName){
-        scaffold <- allScaffolds[allScaffolds$fullName == scaffold_name, ]
+      zenodo <- allScaffolds[allScaffolds$fullName == scaffold_name, ]
     }else if(in_name) {
-        scaffold <- allScaffolds[allScaffolds$name == scaffold_name,]
+      zenodo <- allScaffolds[allScaffolds$name == scaffold_name,]
         # Get latest
-        scaffold <- scaffold[scaffold$version == max(scaffold$version)]
+        zenodo <- zenodo[zenodo$version == max(zenodo$version)]
     }
-
-    # Create dir
-    message("Putting '", name,"' in folder '", path, "'")
-    system2(c("mkdir", "-p", path))
-
-
+    
     # If scaffold is already downloaded
-    if (file.exists(file.path(path, scaffold$filename))){
-        scaffold <- readRDS(file.path(path, scaffold$filename))
-        return(scaffold)
+    if (file.exists(file.path(path, zenodo$filename))){
+      scaffold <- readRDS(file.path(path, zenodo$filename))
+      return(scaffold)
     }
-
+    
+    if(store){
+      # Create dir
+      message("Putting '", name,"' in folder '", path, "'")
+      system2(c("mkdir", "-p", path))
+    } else{
+      path = "./"
+      message("Scaffold will be removed after download.")
+      }
+    
     # Download scaffold
     zen4R::download_zenodo(
-        doi = scaffold$doi,
-        files = scaffold$filename,
+        doi = zenodo$doi,
+        files = zenodo$filename,
         path = path,
+        quiet = store,
         timeout = timeout)
 
-    scaffold <- readRDS(file.path(path, scaffold$filename))
+    scaffold <- readRDS(file.path(path, zenodo$filename))
+    
+    if(!store) system2(c("rm", zenodo$filename)); message("Scaffold deleted.")
+    
     return(scaffold)
 }
 

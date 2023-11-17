@@ -1,5 +1,6 @@
 # spaceRATScaffolds 0.99.2
 
+* Optional store parameter in `getScaffold`
 * Put scaffold on Zenodo
 * Create `getScaffold` function that gets scaffold from Zenodo
 

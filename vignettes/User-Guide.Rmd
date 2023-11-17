@@ -41,6 +41,30 @@ listConverters()
 
 ```
 
+## Preload a scaffold
+
+Scaffolds are stored on [Zenodo](https://zenodo.org/records/10142340).
+Preload a scaffold with:
+
+```{r preload}
+
+scaffoldName <- listScaffolds()[1]
+
+scaffold <- getScaffold(
+  name = scaffoldName,
+  path = "scaffolds/",
+  timeout = 120,
+  store = FALSE
+  )
+```
+
+## Get scaffold information
+
+```{r help, eval=FALSE}
+
+utils::help(scaffoldName)
+```
+
 
 # Session Info
 

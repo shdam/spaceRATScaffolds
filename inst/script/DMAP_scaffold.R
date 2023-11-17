@@ -3,7 +3,7 @@
 library("spaceRAT")
 
 data("DMAP_exprs", "DMAP_pData", package = "spaceRATScaffolds")
-DMAP.v1_scaffold <- buildScaffold(
+DMAP.v1 <- buildScaffold(
     object = DMAP_exprs,
     pheno = DMAP_pData,
     colname = "cell_types",
@@ -12,6 +12,6 @@ DMAP.v1_scaffold <- buildScaffold(
 )
 # plotScaffold(DMAPv1_scaffold,"DMAP PCA scaffold", dim_reduction = "PCA")
 # Save scaffold in extdata to be put on Zenodo
-saveRDS(DMAP.v1_scaffold, file = "inst/extdata/DMAP.v1_scaffold.rds")
-DMAP.v1_scaffold <- "getScaffold('DMAP.v1')"
-usethis::use_data(DMAP.v1_scaffold, overwrite = TRUE)
+saveRDS(DMAP.v1, file = "inst/extdata/DMAP.v1_scaffold.rds")
+DMAP.v1 <- "getScaffold('DMAP.v1')"
+usethis::use_data(DMAP.v1, overwrite = TRUE)

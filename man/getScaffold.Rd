@@ -4,10 +4,12 @@
 \alias{getScaffold}
 \title{Helper function to get spaceRAT scaffolds}
 \usage{
-getScaffold(name, path = "scaffolds", timeout = 120)
+getScaffold(name, store = TRUE, path = "scaffolds", timeout = 120)
 }
 \arguments{
 \item{name}{Name of scaffold to get}
+
+\item{store}{Whether or not to store the scaffold for future use}
 
 \item{path}{Path to folder for storing scaffolds}
 
