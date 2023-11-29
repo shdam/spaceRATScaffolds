@@ -26,13 +26,31 @@ This is a data package. The current `spaceRAT` scaffolds include:
 library("spaceRATScaffolds")
 
 listScaffolds()
-#> [1] "DMAP_scaffold"
+#> [1] "DMAP.v1" "TCGA.v1" "GTEx.v1"
 
 listDatasets()
 #> [1] "DMAP_exprs"    "DMAP_pData"    "ilaria_counts" "ilaria_pData"
 
 listConverters()
 #> [1] "gene_id_converter_hs" "gene_id_converter_mm"
+```
+
+### Get scaffold
+
+``` r
+scaffold <- getScaffold("DMAP")
+
+# Add versioning to get a specific version:
+scaffold.v1 <- getScaffold("DMAP.v1")
+```
+
+### Load test data
+
+``` r
+
+# Load test data 
+testData <- loadData("DMAP_exprs")
+testPheno <- loadData("DMAP_pData")
 ```
 
 ## Report issues

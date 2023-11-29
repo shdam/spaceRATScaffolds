@@ -22,9 +22,9 @@ Authors@R: c(
 Description: This package includes prebuilt scaffolds for the R package
     spaceRAT.
     It also contains example data used in spaceRAT.
-    See listScaffolds() to get a list of prebuilt scaffolds,
-    and listDatasets() for example data.
-    Get scaffolds with getScaffold(scaffoldName)
+    See `listScaffolds()` to get a list of prebuilt scaffolds,
+    and `listDatasets()` for example data.
+    Get scaffolds with `getScaffold('scaffoldName')`
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports: 

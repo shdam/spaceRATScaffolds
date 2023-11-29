@@ -57,7 +57,7 @@ tcga_pheno_scaffold <- readr::read_csv("inst/extdata/tcga_representativeSet_meta
 
 colname <- "study"#"tcga.gdc_cases.project.primary_site" # tcga.gdc_cases.project.name
 
-TCGA.v1_scaffold <- buildScaffold(
+TCGA.v1 <- buildScaffold(
     object = tcga_exprs_scaffold,
     pheno = tcga_pheno_scaffold,
     colname = colname,
@@ -70,9 +70,10 @@ TCGA.v1_scaffold <- buildScaffold(
     add_umap = TRUE
 )
 
-# plotScaffold(TCGA.v1_scaffold, "TCGA PCA scaffold", dimred = "PCA")
+# plotScaffold(TCGA.v1, "TCGA PCA scaffold", dimred = "PCA")
 
 # Save scaffold in extdata to be put on Zenodo
-saveRDS(TCGA.v1_scaffold, file = "inst/extdata/TCGA.v1_scaffold.rds")
+saveRDS(TCGA.v1, file = "inst/extdata/TCGA.v1.rds")
 
-
+TCGA.v1 <- "getScaffold('TCGA.v1')"
+usethis::use_data(TCGA.v1, overwrite = TRUE)

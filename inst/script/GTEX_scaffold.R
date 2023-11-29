@@ -78,7 +78,7 @@ gtex_pheno_scaffold <- readr::read_csv("inst/extdata/gtex_representativeSet_meta
 
 colname <- "gtex.smts"
 
-GTEx.v1_scaffold <- buildScaffold(
+GTEx.v1 <- buildScaffold(
     object = gtex_exprs_scaffold,
     pheno = gtex_pheno_scaffold,
     colname = colname,
@@ -91,7 +91,10 @@ GTEx.v1_scaffold <- buildScaffold(
     add_umap = TRUE
     )
 
-# plotScaffold(GTEX_scaffold,"GTEX PCA scaffold", dimred = "PCA")
+# plotScaffold(GTEX.v1,"GTEX PCA scaffold", dimred = "PCA")
 
 # Save scaffold in extdata to be put on Zenodo
-saveRDS(GTEx.v1_scaffold, file = "inst/extdata/GTEx.v1_scaffold.rds")
+saveRDS(GTEx.v1, file = "inst/extdata/GTEx.v1.rds")
+
+GTEx.v1 <- "getScaffold('GTEx.v1')"
+usethis::use_data(GTEx.v1, overwrite = TRUE)
