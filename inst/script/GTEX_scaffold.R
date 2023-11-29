@@ -35,11 +35,14 @@ library("dplyr")
 library("tibble")
 
 # find median in log2 cpm space
-gtex_group_median <- data.frame(t(gtex), TISSUE=gtex_phenoData$gtex.smts) %>% group_by(TISSUE) %>% summarise_each(list(median)) %>% as.data.frame
+gtex_group_median <- data.frame(t(gtex), TISSUE=gtex_phenoData$gtex.smts) %>%
+    group_by(TISSUE) %>%
+    summarise_each(list(median)) %>%
+    as.data.frame
 
-gtex_group_median$TISSUE[is.na(gtex_group_median$TISSUE)] = "NoInfo"
-gtex_phenoData$gtex.smtsd[is.na(gtex_phenoData$gtex.smtsd)] = "NoInfo"
-gtex_phenoData$gtex.smts[is.na(gtex_phenoData$gtex.smts)] = "NoInfo"
+gtex_group_median$TISSUE[is.na(gtex_group_median$TISSUE)] <- "NoInfo"
+gtex_phenoData$gtex.smtsd[is.na(gtex_phenoData$gtex.smtsd)] <- "NoInfo"
+gtex_phenoData$gtex.smts[is.na(gtex_phenoData$gtex.smts)] <- "NoInfo"
 
 rownames(gtex_group_median) <- gtex_group_median$TISSUE
 gtex_group_median <- gtex_group_median[,-1]

@@ -15,6 +15,12 @@ getScaffold(name, store = TRUE, path = "scaffolds", timeout = 120)
 
 \item{timeout}{Setting download timeout}
 }
+\value{
+A spaceRAT scaffold
+}
 \description{
 Helper function to get spaceRAT scaffolds
+}
+\examples{
+scaffold <- getScaffold("DMAP")
 }

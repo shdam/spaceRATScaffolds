@@ -6,4 +6,4 @@
 ^doc$
 ^Meta$
 ^.git
-scaffolds
+^scaffolds$

@@ -1,5 +1,7 @@
 # spaceRATScaffolds 0.99.2
 
+* allScaffolds are now extracted from Zenodo instead of being a manually 
+generated object
 * Add descriptions for TCGA and GTEx scaffolds
 * Optional store parameter in `getScaffold`
 * Put scaffold on Zenodo

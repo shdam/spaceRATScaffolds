@@ -32,7 +32,7 @@ tcga_group_median <- tcga_group_median[,-1]
 
 
 # subset to each group, and find the closest to the centroid (of that group).
-sample_list = list()
+sample_list <- list()
 for (i in rownames(tcga_group_median)) {
     if (sum(tcga_phenoData$study==i)>20){ # require e.g. at least 20 samples per group
         close_samples_in_class <- as.vector(get.knnx(data = t(tcga[,tcga_phenoData$study==i]), query = tcga_group_median[i, ], 20)$nn.index)

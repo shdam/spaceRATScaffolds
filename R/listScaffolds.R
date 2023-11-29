@@ -6,8 +6,7 @@
 #' listScaffolds()
 #' @export
 listScaffolds <- function(){
-    utils::data("allScaffolds", package = "spaceRATScaffolds")
-    return(allScaffolds$fullName)
+    return(getAllScaffolds()$fullName)
 }
 
 #' List available datasets
@@ -20,7 +19,10 @@ listScaffolds <- function(){
 listDatasets <- function(){
     data_list <- as.character(
         utils::data(package = "spaceRATScaffolds")$results[,"Item"])
-    data_list[grepl("counts", data_list) | grepl("exprs", data_list) | grepl("pData", data_list)]
+    data_list[
+        grepl("counts", data_list) |
+        grepl("exprs", data_list) |
+        grepl("pData", data_list)]
 }
 
 #' List available ID converters

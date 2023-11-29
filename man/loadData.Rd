@@ -6,6 +6,12 @@
 \usage{
 loadData(name)
 }
+\value{
+a spaceRATScaffolds data object
+}
 \description{
 Helper function to load package data
+}
+\examples{
+testData <- loadData("DMAP_exprs")
 }
