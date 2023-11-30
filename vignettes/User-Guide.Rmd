@@ -1,14 +1,14 @@
 ---
-title: "User Guide"
+title: "Introduction to spaceRATScaffolds"
 output: 
-    BiocStyle::html_document:
+  BiocStyle::html_document:
     toc: true
     toc_depth: 2
     highlight: pygments
 author: "Søren Helweg Dam"
 date: "Last updated: `r format(Sys.Date(), '%Y.%m.%d')`"
 vignette: >
-    %\VignetteIndexEntry{User Guide}
+    %\VignetteIndexEntry{Introduction to spaceRATScaffolds}
     %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
 ---
@@ -18,6 +18,14 @@ knitr::opts_chunk$set(
     collapse = TRUE,
     comment = "#>"
 )
+```
+
+# Installation
+
+*Install from GitHub*
+
+``` {r install, eval = FALSE}
+remotes::install_github("shdam/spaceRATScaffolds", build_vignettes = TRUE)
 ```
 
 # Introduction
@@ -48,7 +56,7 @@ Preload a scaffold with:
 
 ```{r preload}
 
-scaffoldName <- listScaffolds()[1]
+scaffoldName <- "DMAP"
 
 scaffold <- getScaffold(
     name = scaffoldName,

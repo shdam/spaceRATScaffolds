@@ -10,7 +10,8 @@ listScaffolds()
 A list of scaffold names
 }
 \description{
-List available scaffolds
+This function will check the prebuilt scaffolds available on Zendodo and
+list them.
 }
 \examples{
 listScaffolds()

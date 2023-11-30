@@ -4,7 +4,7 @@
 #'
 #' @importFrom zen4R get_zenodo
 #' @return A data.frame of scaffolds
-#' @export
+#' @noRd
 #'
 #' @examples
 #' allScaffolds <- getAllScaffolds()

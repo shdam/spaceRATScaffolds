@@ -1,5 +1,9 @@
 #' Helper function to load package data
+#'
+#' This is a helper function that extracts a dataset in `spaceRATScaffolds`,
+#' allowing the user to store the object in the name of their choice.
 #' @importFrom utils data
+#' @param name Name of object to load
 #' @examples
 #' testData <- loadData("DMAP_exprs")
 #' @return a spaceRATScaffolds data object

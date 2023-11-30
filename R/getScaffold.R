@@ -1,4 +1,9 @@
 #' Helper function to get spaceRAT scaffolds
+#'
+#' This function acquires a given prebuilt scaffold from the scaffolds
+#' available on Zenodo. To prevent repeated downloads, `store` can be set to
+#' `TRUE`. This will create a "scaffolds" folder, where the scaffolds are
+#' stored.
 #' @importFrom zen4R download_zenodo
 #' @importFrom utils data
 #' @param name Name of scaffold to get
@@ -11,7 +16,7 @@
 #' @export
 getScaffold <- function(
     name,
-    store = TRUE,
+    store = FALSE,
     path = "scaffolds",
     timeout = 120){
 
@@ -45,41 +50,3 @@ getScaffold <- function(
     return(scaffold)
 }
 
-#' Extract Zenodo information about a scaffold
-#'
-#' @param scaffoldName Name of scaffold
-#'
-#' @return A data.frame with Zenodo location of scaffold
-#'
-#' @examples
-#' zenodo <- getZenodo("DMAP")
-getZenodo <- function(scaffoldName){
-    # Get info of scaffolds
-    allScaffolds <- getAllScaffolds()
-
-    if(length(scaffoldName) > 1) stop(
-        "Only one scaffold can be requested at a time. ",
-        "The available are:\n",
-        paste(allScaffolds$fullName, collapse=", "))
-
-    # Remove "_scaffold" from name
-    scaffoldName <- gsub("_scaffold", "", scaffoldName)
-
-    # Check name matches
-    in_fullName <- all(scaffoldName %in% allScaffolds$fullName)
-    in_name <- all(scaffoldName %in% allScaffolds$name)
-    if(!(in_fullName | in_name)) stop(
-        name, " is not an available scaffold. The available are:\n",
-        paste(allScaffolds$fullName, collapse=", "))
-
-    # Subset scaffolds
-    if(in_fullName){
-        zenodo <- allScaffolds[allScaffolds$fullName == scaffoldName, ]
-    }else if(in_name) {
-        zenodo <- allScaffolds[allScaffolds$name == scaffoldName,]
-        # Get latest
-        zenodo <- zenodo[zenodo$version == max(zenodo$version)]
-    }
-
-    return(zenodo)
-}

@@ -3,7 +3,7 @@
 #' \url{https://portal.gdc.cancer.gov/}
 #' @description A spaceRAT scaffold of The Cancer Genome Atlas.
 #' @docType data
-#' @usage getScaffold("TCGA")
+#' @usage NULL
 #' @format a spaceRAT scaffold
 #' @return a spaceRAT scaffold
 #' @keywords datasets

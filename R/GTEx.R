@@ -3,7 +3,7 @@
 #' \url{https://www.gtexportal.org/home/}
 #' @description A spaceRAT scaffold of The Genotype-Tissue Expression project.
 #' @docType data
-#' @usage getScaffold("GTEx")
+#' @usage NULL
 #' @format a spaceRAT scaffold
 #' @return a spaceRAT scaffold
 #' @keywords datasets

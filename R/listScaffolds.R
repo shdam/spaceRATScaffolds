@@ -1,4 +1,7 @@
 #' List available scaffolds
+#'
+#' This function will check the prebuilt scaffolds available on Zendodo and
+#' list them.
 #' @return A list of scaffold names
 #' @usage listScaffolds()
 #' @importFrom utils data
@@ -10,6 +13,8 @@ listScaffolds <- function(){
 }
 
 #' List available datasets
+#'
+#' This function will list the test datasets available in `spaceRATScaffolds`.
 #' @return A list of datasets names
 #' @usage listDatasets()
 #' @importFrom utils data
@@ -26,6 +31,9 @@ listDatasets <- function(){
 }
 
 #' List available ID converters
+#'
+#' This function will list the gene ID converters available in
+#' `spaceRATscaffolds`.
 #' @return A list of ID converters names
 #' @usage listConverters()
 #' @importFrom utils data

@@ -11,9 +11,6 @@ a spaceRAT scaffold
 Raw data available at:
 \url{https://portal.gdc.cancer.gov/}
 }
-\usage{
-getScaffold("TCGA")
-}
 \value{
 a spaceRAT scaffold
 }

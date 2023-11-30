@@ -11,9 +11,6 @@ a spaceRAT scaffold
 Raw data available at:
 \url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE24759}
 }
-\usage{
-getScaffold("DMAP")
-}
 \value{
 a spaceRAT scaffold
 }

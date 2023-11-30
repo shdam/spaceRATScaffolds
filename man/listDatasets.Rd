@@ -10,7 +10,7 @@ listDatasets()
 A list of datasets names
 }
 \description{
-List available datasets
+This function will list the test datasets available in `spaceRATScaffolds`.
 }
 \examples{
 listDatasets()

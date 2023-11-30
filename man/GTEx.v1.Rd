@@ -11,9 +11,6 @@ a spaceRAT scaffold
 Raw data available at:
 \url{https://www.gtexportal.org/home/}
 }
-\usage{
-getScaffold("GTEx")
-}
 \value{
 a spaceRAT scaffold
 }

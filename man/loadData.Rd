@@ -6,11 +6,15 @@
 \usage{
 loadData(name)
 }
+\arguments{
+\item{name}{Name of object to load}
+}
 \value{
 a spaceRATScaffolds data object
 }
 \description{
-Helper function to load package data
+This is a helper function that extracts a dataset in `spaceRATScaffolds`,
+allowing the user to store the object in the name of their choice.
 }
 \examples{
 testData <- loadData("DMAP_exprs")

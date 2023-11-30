@@ -25,8 +25,8 @@
 #' \url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE24759}
 #' @description Scaffold of normal hematopoietic cells.
 #' The data was measured by microarray.
+#' @usage NULL
 #' @docType data
-#' @usage getScaffold("DMAP")
 #' @format a spaceRAT scaffold
 #' @return a spaceRAT scaffold
 #' @keywords datasets
