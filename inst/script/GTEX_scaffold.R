@@ -49,8 +49,8 @@ gtex_group_median <- gtex_group_median[,-1]
 # subset to each group, and find the closest to the centroid (of that group).  in log2 cpm space
 sample_list <- list()
 for (i in rownames(gtex_group_median)) {
-    if (sum(gtex_phenoData$gtex.smts==i)>20){ # require at least 20 samples per group
-        close_samples_in_class <- as.vector(get.knnx(data = t(gtex[,gtex_phenoData$gtex.smts==i]), query = gtex_group_median[i, ], 20)$nn.index)
+    if (sum(gtex_phenoData$gtex.smts==i)>10){ # require at least 20 samples per group
+        close_samples_in_class <- as.vector(get.knnx(data = t(gtex[,gtex_phenoData$gtex.smts==i]), query = gtex_group_median[i, ], 10)$nn.index)
         sample_list[[i]] <- colnames(gtex[,gtex_phenoData$gtex.smts==i][,close_samples_in_class])
     }
 }
@@ -72,26 +72,81 @@ write.csv(gtex_small_phenoData, file="inst/extdata/gtex_representativeSet_metada
 # Scaffold ----
 rm(list=ls())
 library("spaceRAT")
-
+# devtools::load_all("../spaceRAT/")
 gtex_exprs_scaffold <- readr::read_csv("inst/extdata/gtex_representativeSetLog2cpm.csv")
 gtex_pheno_scaffold <- readr::read_csv("inst/extdata/gtex_representativeSet_metadata.csv")
 
+gtex_exprs_scaffold <- as.data.frame(gtex_exprs_scaffold)
+rownames(gtex_exprs_scaffold) <- gtex_exprs_scaffold[[1]]
+gtex_exprs_scaffold[[1]] <- NULL
+
 colname <- "gtex.smts"
+gtex_exprs_scaffold <- gtex_exprs_scaffold[, gtex_pheno_scaffold$gtex.smts != "NoInfo"]
+gtex_pheno_scaffold <- gtex_pheno_scaffold[gtex_pheno_scaffold$gtex.smts != "NoInfo", ]
 
+## V1 ----
+# gtex_exprs_scaffold <- gtex_exprs_scaffold[gsub("\\.[0-9]+$","", gtex_exprs_scaffold[[1]]) %in% rownames(ilaria_counts),]
+# gtex_exprs_scaffold <- gtex_exprs_scaffold[gtex_exprs_scaffold[[1]] != "NA",]
 GTEx.v1_scaffold <- buildScaffold(
-    object = gtex_exprs_scaffold,
-    pheno = gtex_pheno_scaffold,
-    colname = colname,
-    data = "exprs",
-    classes = NULL,
-    pval_cutoff = 0.05,
-    lfc_cutoff = 2,
-    pca_scale = FALSE,
-    annotation = "ensembl_gene",
-    add_umap = TRUE
-    )
+  object = gtex_exprs_scaffold,# t(gtex_reverted_scaffold), #gtex_exprs_scaffold
+  pheno = gtex_pheno_scaffold,
+  colname = "gtex.smts",
+  data = "exprs",
+  # classes = unique(gtex_pheno_scaffold$gtex.smts) |> stringr::str_remove(c("(Bone Marrow|Testis)")),
+  # pca_scale = TRUE,
+  pval_cutoff = 0.01,
+  lfc_cutoff = 1,
+  n_genes = 200,
+  # sort.by = "logFC", #"p"
+  pca_scale = TRUE,
+  rank_scale = T,
+  # annotation = "ensembl_gene",
+  # add_umap = TRUE
+)
 
-# plotScaffold(GTEX_scaffold,"GTEX PCA scaffold", dimred = "PCA")
+plotScaffold(GTEx.v1_scaffold,"GTEX PCA scaffold", dimred = "PCA", dims = c(1,2))
 
 # Save scaffold in extdata to be put on Zenodo
 saveRDS(GTEx.v1_scaffold, file = "inst/extdata/GTEx.v1_scaffold.rds")
+
+# Projection
+data("ilaria_counts", "ilaria_pData", package = "spaceRATScaffolds")
+projectSample(GTEx.v1_scaffold,ilaria_counts,ilaria_pData,"cancer_type", title = "GTEx", dims = c(1,2), subset_intersection = F)
+
+
+## V2 ----
+gtex_pca <- prcomp(t(gtex_exprs_scaffold), scale. = TRUE)
+gtex_pca$x[,1:2] <- 0
+gtex_reverted_scaffold <- gtex_pca$x %*% t(gtex_pca$rotation) + matrix(rep(gtex_pca$center, ncol(gtex_exprs_scaffold)), nrow = ncol(gtex_exprs_scaffold), ncol = nrow(gtex_exprs_scaffold), byrow = TRUE)
+
+GTEx.v2_scaffold <- buildScaffold(
+    object = t(gtex_reverted_scaffold), #gtex_exprs_scaffold
+    pheno = gtex_pheno_scaffold,
+    colname = "gtex.smts",
+    data = "exprs",
+    # classes = unique(gtex_pheno_scaffold$gtex.smts) |> stringr::str_remove(c("(Bone Marrow|Testis)")),
+    # pca_scale = TRUE,
+    pval_cutoff = 0.01,
+    lfc_cutoff = 1,
+    n_genes = 200,
+    # sort.by = "logFC", #"p"
+    pca_scale = TRUE,
+    rank_scale = T,
+    # annotation = "ensembl_gene",
+    #ranking = TRUE
+    # add_umap = TRUE
+)
+plotScaffold(GTEx.v2_scaffold,"GTEX PCA scaffold", dimred = "PCA", dims = c(1,2))
+
+# Save scaffold in extdata to be put on Zenodo
+saveRDS(GTEx.v2_scaffold, file = "inst/extdata/GTEx.v2_scaffold.rds")
+
+
+data("ilaria_counts", "ilaria_pData", package = "spaceRATScaffolds")
+projectSample(GTEx.v2_scaffold,ilaria_counts,ilaria_pData,"cancer_type", title = "GTEx", dims = c(3,4))
+
+# projectSample(GTEx.v1_scaffold,ilaria_counts,ilaria_pData,"cancer_type", title = "GTEx", dims = c(1,3),
+#               classes = unique(gtex_pheno_scaffold$gtex.smts) |> stringr::str_remove(c("(Bone Marrow|Testis)")))
+
+
+# projectSample(GTEx.v1_scaffold,gtex_exprs_scaffold[, gtex_pheno_scaffold$gtex.smts == "Muscle"], colname = "cancer_type", title = "GTEx", dims = c(1,2))
