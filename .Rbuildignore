@@ -1,9 +1,10 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^inst
+^inst/extdata
 ^README\.Rmd$
 ^LICENSE\.md$
-^doc$
-^Meta$
 ^.git
-scaffolds
+^scaffolds
+^doc
+^Meta$
+data_manifest.yml

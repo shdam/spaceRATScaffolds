@@ -46,11 +46,23 @@ listDatasets()
 listConverters()
 ```
 
-### Load data
+### Get scaffold
 
+```{r scaffold}
+scaffold <- getScaffold("DMAP")
+
+# Add versioning to get a specific version:
+scaffold.v1 <- getScaffold("DMAP.v1")
+```
+
+
+### Load test data
 
 ```{r loading}
 
+# Load test data 
+testData <- loadData("DMAP_exprs")
+testPheno <- loadData("DMAP_pData")
 ```
 
 

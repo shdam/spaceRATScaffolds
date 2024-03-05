@@ -3,21 +3,19 @@
 \docType{data}
 \name{DMAP.v1}
 \alias{DMAP.v1}
-\title{DMAP scaffold}
+\title{DMAP scaffold version 1}
 \format{
-a scaffoldSpace
+a spaceRAT scaffold
 }
 \source{
-Created from exprs_dmap
-}
-\usage{
-getScaffold("DMAP")
+Raw data available at:
+\url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE24759}
 }
 \value{
-a scaffoldSpace
+a spaceRAT scaffold
 }
 \description{
-This scaffold was build from the
-\code{\link{exprs_dmap}} object.
+Scaffold of normal hematopoietic cells.
+The data was measured by microarray.
 }
 \keyword{datasets}

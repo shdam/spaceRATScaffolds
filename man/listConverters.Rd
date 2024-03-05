@@ -10,7 +10,8 @@ listConverters()
 A list of ID converters names
 }
 \description{
-List available ID converters
+This function will list the gene ID converters available in
+`spaceRATscaffolds`.
 }
 \examples{
 listConverters()

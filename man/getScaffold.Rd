@@ -4,7 +4,7 @@
 \alias{getScaffold}
 \title{Helper function to get spaceRAT scaffolds}
 \usage{
-getScaffold(name, store = TRUE, path = "scaffolds", timeout = 120)
+getScaffold(name, store = FALSE, path = "scaffolds", timeout = 120)
 }
 \arguments{
 \item{name}{Name of scaffold to get}
@@ -15,6 +15,15 @@ getScaffold(name, store = TRUE, path = "scaffolds", timeout = 120)
 
 \item{timeout}{Setting download timeout}
 }
+\value{
+A spaceRAT scaffold
+}
 \description{
-Helper function to get spaceRAT scaffolds
+This function acquires a given prebuilt scaffold from the scaffolds
+available on Zenodo. To prevent repeated downloads, `store` can be set to
+`TRUE`. This will create a "scaffolds" folder, where the scaffolds are
+stored.
+}
+\examples{
+scaffold <- getScaffold("DMAP")
 }

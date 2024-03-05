@@ -20,13 +20,14 @@
 #' @keywords datasets
 "DMAP_pData"
 
-#' @title  DMAP scaffold
-#' @source Created from exprs_dmap
-#' @description This scaffold was build from the
-#' \code{\link{exprs_dmap}} object.
+#' @title  DMAP scaffold version 1
+#' @source Raw data available at:
+#' \url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE24759}
+#' @description Scaffold of normal hematopoietic cells.
+#' The data was measured by microarray.
+#' @usage NULL
 #' @docType data
-#' @usage getScaffold("DMAP")
-#' @format a scaffoldSpace
-#' @return a scaffoldSpace
+#' @format a spaceRAT scaffold
+#' @return a spaceRAT scaffold
 #' @keywords datasets
 "DMAP.v1"

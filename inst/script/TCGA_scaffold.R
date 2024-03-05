@@ -1,4 +1,4 @@
-## code to prepare `TCGA_scaffold` dataset goes here
+## code to prepare `TCGA` dataset goes here
 
 # Raw ----
 
@@ -34,6 +34,7 @@ tcga_group_median <- tcga_group_median[,-1]
 # subset to each group, and find the closest to the centroid (of that group).
 sample_list = list()
 n_samples <- 10
+
 for (i in rownames(tcga_group_median)) {
   if (sum(tcga_phenoData$study==i)>n_samples){ # require e.g. at least 20 samples per group
     close_samples_in_class <- as.vector(get.knnx(data = t(tcga[,tcga_phenoData$study==i]), query = tcga_group_median[i, ], n_samples)$nn.index)
@@ -54,19 +55,20 @@ rm(list=ls())
 library("spaceRAT")
 # devtools::load_all("../spaceRAT/")
 
-tcga_exprs_scaffold <- readr::read_csv("inst/extdata/tcga_representativeSetLog2cpm.csv")
-tcga_pheno_scaffold <- readr::read_csv("inst/extdata/tcga_representativeSet_metadata.csv")
-tcga_exprs_scaffold <- as.data.frame(tcga_exprs_scaffold)
-rownames(tcga_exprs_scaffold) <- tcga_exprs_scaffold[[1]]
-tcga_exprs_scaffold[[1]] <- NULL
+tcga_exprs <- readr::read_csv("inst/extdata/tcga_representativeSetLog2cpm.csv")
+tcga_pheno <- readr::read_csv("inst/extdata/tcga_representativeSet_metadata.csv")
+tcga_exprs <- as.data.frame(tcga_exprs)
+rownames(tcga_exprs) <- tcga_exprs[[1]]
+tcga_exprs[[1]] <- NULL
 colname <- "study"#"tcga.gdc_cases.project.primary_site" # tcga.gdc_cases.project.name
-# tcga_exprs_scaffold <- tcga_exprs_scaffold[gsub("\\.[0-9]+$","", tcga_exprs_scaffold[[1]]) %in% overlap_genes,]
-# tcga_exprs_scaffold <- tcga_exprs_scaffold[tcga_exprs_scaffold[[1]] != "NA",]
+# tcga_exprs <- tcga_exprs[gsub("\\.[0-9]+$","", tcga_exprs[[1]]) %in% overlap_genes,]
+# tcga_exprs <- tcga_exprs[tcga_exprs[[1]] != "NA",]
+
 
 # V1 ----
-TCGA.v1_scaffold <- buildScaffold(
-    object = tcga_exprs_scaffold,
-    pheno = tcga_pheno_scaffold,
+TCGA.v1 <- buildScaffold(
+    object = tcga_exprs,
+    pheno = tcga_pheno,
     colname = "study",
     data = "exprs",
     classes = NULL,
@@ -81,27 +83,34 @@ TCGA.v1_scaffold <- buildScaffold(
     #ranking = TRUE
     # add_umap = TRUE
 )
-plotScaffold(TCGA.v1_scaffold, "TCGA PCA scaffold", dimred = "PCA", dims = c(1,2))
+
+plotScaffold(TCGA.v1, "TCGA PCA scaffold", dimred = "PCA", dims = c(1,2))
 
 # Save scaffold in extdata to be put on Zenodo
-saveRDS(TCGA.v1_scaffold, file = "inst/extdata/TCGA.v1_scaffold.rds")
+saveRDS(TCGA.v1, file = "inst/extdata/TCGA.v1.rds")
+TCGA.v1 <- "getScaffold('TCGA.v1')"
+usethis::use_data(TCGA.v1, overwrite = TRUE)
 
+# Plat scaffold
 data("ilaria_counts", "ilaria_pData", package = "spaceRATScaffolds")
-projectSample(TCGA.v1_scaffold,ilaria_counts,ilaria_pData,"cancer_type", title = "TCGA - 200 genes, lfc=2 -PC1 (1,2)", dims = c(1,2),
+projectSample(TCGA.v1,ilaria_counts,ilaria_pData,"cancer_type", title = "TCGA - 200 genes, lfc=2 -PC1 (1,2)", dims = c(1,2),
               subset_intersection = F)
 
+
+
+
 # V2 ----
-tcga_pca <- prcomp(t(tcga_exprs_scaffold), scale. = TRUE)
+tcga_pca <- prcomp(t(tcga_exprs), scale. = TRUE)
 tcga_pca$x[,1] <- 0
-tcga_reverted_scaffold <- tcga_pca$x %*% t(tcga_pca$rotation) + matrix(rep(tcga_pca$center, ncol(tcga_exprs_scaffold)), nrow = ncol(tcga_exprs_scaffold), ncol = nrow(tcga_exprs_scaffold), byrow = TRUE)
+tcga_reverted <- tcga_pca$x %*% t(tcga_pca$rotation) + matrix(rep(tcga_pca$center, ncol(tcga_exprs)), nrow = ncol(tcga_exprs), ncol = nrow(tcga_exprs), byrow = TRUE)
 
-# tcga_reverted_scaffold <- predict(tcga_pca, t(tcga_exprs_scaffold)) %*% t(tcga_pca$rotation) + matrix(rep(tcga_pca$center, ncol(tcga_exprs_scaffold)), nrow = ncol(tcga_exprs_scaffold), ncol = nrow(tcga_exprs_scaffold), byrow = TRUE)
+# tcga_reverted <- predict(tcga_pca, t(tcga_exprs)) %*% t(tcga_pca$rotation) + matrix(rep(tcga_pca$center, ncol(tcga_exprs)), nrow = ncol(tcga_exprs), ncol = nrow(tcga_exprs), byrow = TRUE)
 
-# tcga_exprs_scaffold / tcga_pca$sdev[2]^2
+# tcga_exprs / tcga_pca$sdev[2]^2
 
-TCGA.v2_scaffold <- buildScaffold(
-  object = t(tcga_reverted_scaffold),
-  pheno = tcga_pheno_scaffold,
+TCGA.v2 <- buildScaffold(
+  object = t(tcga_reverted),
+  pheno = tcga_pheno,
   colname = "study",
   data = "exprs",
   classes = NULL,
@@ -117,18 +126,18 @@ TCGA.v2_scaffold <- buildScaffold(
   # add_umap = TRUE
 )
 
-plotScaffold(TCGA.v2_scaffold, "TCGA PCA scaffold", dimred = "PCA", dims = c(1,2))
+plotScaffold(TCGA.v2, "TCGA PCA scaffold", dimred = "PCA", dims = c(1,2))
 
 # Save scaffold in extdata to be put on Zenodo
-saveRDS(TCGA.v2_scaffold, file = "inst/extdata/TCGA.v2_scaffold.rds")
-TCGA.v2_scaffold <- readRDS("inst/extdata/TCGA.v2_scaffold.rds")
+saveRDS(TCGA.v2, file = "inst/extdata/TCGA.v2.rds")
+TCGA.v2 <- readRDS("inst/extdata/TCGA.v2.rds")
 
 data("ilaria_counts", "ilaria_pData", package = "spaceRATScaffolds")
 
-projectSample(TCGA.v2_scaffold,ilaria_counts,ilaria_pData,"cancer_type", title = "TCGA - 200 genes, lfc=2 -PC1 (1,2)", dims = c(1,2),
+projectSample(TCGA.v2,ilaria_counts,ilaria_pData,"cancer_type", title = "TCGA - 200 genes, lfc=2 -PC1 (1,2)", dims = c(1,2),
               subset_intersection = F)
 
-scaffold <- TCGA.v1_scaffold
+scaffold <- TCGA.v1
 rownames(scaffold$rank) <- rownames(scaffold$rank) |> 
   stringr::str_remove("_.*")
 
@@ -139,7 +148,7 @@ ilaria_counts2 <- ilaria_pca$x %*% t(ilaria_pca$rotation) + matrix(rep(ilaria_pc
 
 
 # projectSample(scaffold,ilaria_counts,ilaria_pData,"cancer_type", title = "TCGA", dims = c(1,2), pca_scale = FALSE)
-projectSample(TCGA.v2_scaffold,ilaria_counts,ilaria_pData,"cancer_type", title = "TCGA - 200 genes, lfc=2 -PC1 (1,2)", dims = c(3,4),
+projectSample(TCGA.v2,ilaria_counts,ilaria_pData,"cancer_type", title = "TCGA - 200 genes, lfc=2 -PC1 (1,2)", dims = c(3,4),
               subset_intersection = F,
                # classes = c("ACC", "BLCA", "BRCA", "CESC", "CHOL", "COAD", "DLBC", "ESCA", "GBM",  "HNSC", "KICH", "KIRC", "KIRP",
                #             "LAML",
@@ -149,23 +158,23 @@ projectSample(TCGA.v2_scaffold,ilaria_counts,ilaria_pData,"cancer_type", title =
                # scale = TRUE
                )
 
-adjustment <- rowMeans(tcga_exprs_scaffold -  t(tcga_reverted_scaffold))
-adjustment <- as.numeric((tcga_exprs_scaffold -  t(tcga_reverted_scaffold))[1,])
+adjustment <- rowMeans(tcga_exprs -  t(tcga_reverted))
+adjustment <- as.numeric((tcga_exprs -  t(tcga_reverted))[1,])
 
-# new_exprs <- tcga_exprs_scaffold - (tcga_exprs_scaffold -  t(tcga_reverted_scaffold))
-new_exprs <- apply(tcga_exprs_scaffold, 1, function(x) x-adjustment )
-new_exprs <- t(apply(tcga_exprs_scaffold, 1, function(x) x - adjustment))
-new_exprs <- sweep(tcga_exprs_scaffold, 1, adjustment, "-")
+# new_exprs <- tcga_exprs - (tcga_exprs -  t(tcga_reverted))
+new_exprs <- apply(tcga_exprs, 1, function(x) x-adjustment )
+new_exprs <- t(apply(tcga_exprs, 1, function(x) x - adjustment))
+new_exprs <- sweep(tcga_exprs, 1, adjustment, "-")
 
-new_exprs <- tcga_exprs_scaffold
+new_exprs <- tcga_exprs
 
 subset <- "GBM"
-new_exprs <- new_exprs[, tcga_pheno_scaffold[which(tcga_pheno_scaffold$study == subset),1, drop =T]]
-projectSample(TCGA.v1_scaffold,new_exprs, title = paste("TCGA +", subset, "samples"), dims = c(1,2))
+new_exprs <- new_exprs[, tcga_pheno[which(tcga_pheno$study == subset),1, drop =T]]
+projectSample(TCGA.v1,new_exprs, title = paste("TCGA +", subset, "samples"), dims = c(1,2))
 
 subset <- "Blood"
-new_exprs <- gtex_exprs_scaffold[, gtex_pheno_scaffold[which(gtex_pheno_scaffold$gtex.smts == subset),1, drop =T]]
-projectSample(TCGA.v1_scaffold,new_exprs, title = paste("TCGA +", subset, "samples"), dims = c(3,4))
+new_exprs <- gtex_exprs[, gtex_pheno[which(gtex_pheno$gtex.smts == subset),1, drop =T]]
+projectSample(TCGA.v1,new_exprs, title = paste("TCGA +", subset, "samples"), dims = c(3,4))
 
 devtools::load_all("../spaceRAT/")
 
@@ -185,3 +194,6 @@ params <- tibble::tribble(
   12, "TCGA", 0.01, 1, 600, "groupScaling + no normalization (dims 1,2)",
 )
 
+saveRDS(TCGA.v1, file = "inst/extdata/TCGA.v1.rds")
+TCGA.v1 <- "getScaffold('TCGA.v1')"
+usethis::use_data(TCGA.v1, overwrite = TRUE)
