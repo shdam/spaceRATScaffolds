@@ -88,7 +88,7 @@ plotScaffold(TCGA.v1, "TCGA PCA scaffold", dimred = "PCA", dims = c(1,2))
 
 # Save scaffold in extdata to be put on Zenodo
 saveRDS(TCGA.v1, file = "inst/extdata/TCGA.v1.rds")
-TCGA.v1 <- "getScaffold('TCGA.v1')"
+TCGA.v1 <- "TCGA.v1 <- getScaffold('TCGA.v1')"
 usethis::use_data(TCGA.v1, overwrite = TRUE)
 
 # Plat scaffold
@@ -194,6 +194,6 @@ params <- tibble::tribble(
   12, "TCGA", 0.01, 1, 600, "groupScaling + no normalization (dims 1,2)",
 )
 
-saveRDS(TCGA.v1, file = "inst/extdata/TCGA.v1.rds")
-TCGA.v1 <- "getScaffold('TCGA.v1')"
-usethis::use_data(TCGA.v1, overwrite = TRUE)
+saveRDS(TCGA.v2, file = "inst/extdata/TCGA.v2.rds")
+TCGA.v2 <- "TCGA.v2 <- getScaffold('TCGA.v2')"
+usethis::use_data(TCGA.v2, overwrite = TRUE)

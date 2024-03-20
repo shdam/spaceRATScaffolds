@@ -117,12 +117,12 @@ projectSample(GTEx.v1,ilaria_counts,ilaria_pData,"cancer_type", title = "GTEx", 
 
 # Save scaffold in extdata to be put on Zenodo
 saveRDS(GTEx.v1, file = "inst/extdata/GTEx.v1.rds")
-GTEx.v1 <- "getScaffold('GTEx.v1')"
+GTEx.v1 <- "GTEx.v1 <- getScaffold('GTEx.v1')"
 usethis::use_data(GTEx.v1, overwrite = TRUE)
 
 
 
-## V2 ----
+## V2 (not finalized) ----
 gtex_pca <- prcomp(t(gtex_exprs), scale. = TRUE)
 gtex_pca$x[,1:2] <- 0
 gtex_reverted <- gtex_pca$x %*% t(gtex_pca$rotation) + matrix(rep(gtex_pca$center, ncol(gtex_exprs)), nrow = ncol(gtex_exprs), ncol = nrow(gtex_exprs), byrow = TRUE)

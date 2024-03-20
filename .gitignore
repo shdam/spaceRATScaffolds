@@ -5,8 +5,6 @@
 *.DS_Store
 *.Rproj
 /Meta/
-data/GTEX*
 inst/extdata
-data/TCGA*
 /doc/
 scaffolds

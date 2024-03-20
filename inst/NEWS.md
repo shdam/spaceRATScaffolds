@@ -1,3 +1,8 @@
+# spaceRATScaffolds 0.99.4
+
+* Updated scaffolds on Zenodo
+* Added TCGA.v2
+
 # spaceRATScaffolds 0.99.3
 
 * Update TCGA and GTEx scaffolds

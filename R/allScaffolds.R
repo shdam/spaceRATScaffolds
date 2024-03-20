@@ -8,14 +8,14 @@
 #'
 #' @examples
 #' allScaffolds <- getAllScaffolds()
-getAllScaffolds <- function(doi = "10.5281/zenodo.10142340"){
-    zen <- zen4R::get_zenodo("10.5281/zenodo.10142340")
+getAllScaffolds <- function(doi = "10.5281/zenodo.10842509"){
+    zen <- zen4R::get_zenodo("10.5281/zenodo.10842509")
     allScaffolds <- do.call(rbind, lapply(zen$files, function(x) {
         data.frame(
             name = gsub("\\..*", "", x$filename),
-            version = gsub(".*\\.v(.*)\\_.*", "\\1", x$filename),
+            version = gsub(".*\\.v(\\d*).*", "\\1", x$filename),
             doi = doi,
-            fullName = gsub("_scaffold\\.rds", "", x$filename),
+            fullName = gsub("(_scaffold)?\\.rds", "", x$filename),
             filename = x$filename,
             stringsAsFactors = FALSE
         )

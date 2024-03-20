@@ -46,7 +46,10 @@ getScaffold <- function(
         timeout = timeout)
 
     scaffold <- readRDS(file.path(path, zenodo$filename))
-    if(!store) system2(c("rm", zenodo$filename)); message("Scaffold deleted.")
+    if(!store) {
+        system2(c("rm", zenodo$filename))
+        message("Scaffold deleted.")
+    }
     return(scaffold)
 }
 

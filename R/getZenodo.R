@@ -29,9 +29,9 @@ getZenodo <- function(name){
     if(in_fullName){
         zenodo <- allScaffolds[allScaffolds$fullName == scaffoldName, ]
     }else if(in_name) {
-        zenodo <- allScaffolds[allScaffolds$name == scaffoldName,]
+        zenodo <- allScaffolds[allScaffolds$name == scaffoldName, ]
         # Get latest
-        zenodo <- zenodo[zenodo$version == max(zenodo$version)]
+        zenodo <- zenodo[zenodo$version == max(zenodo$version), ]
     }
 
     return(zenodo)

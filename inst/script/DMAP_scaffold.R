@@ -14,7 +14,7 @@ DMAP.v1 <- buildScaffold(
 # plotScaffold(DMAPv1_scaffold,"DMAP PCA scaffold", dim_reduction = "PCA")
 # Save scaffold in extdata to be put on Zenodo
 saveRDS(DMAP.v1, file = "inst/extdata/DMAP.v1_scaffold.rds")
-DMAP.v1 <- "getScaffold('DMAP.v1')"
+DMAP.v1 <- "DMAP.v1 <- getScaffold('DMAP.v1')"
 usethis::use_data(DMAP.v1, overwrite = TRUE)
 
 # projectSample(DMAP.v1,ilaria_counts,ilaria_pData,"cancer_type", title = "DMAP")

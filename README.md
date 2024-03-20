@@ -4,8 +4,8 @@
 ## spaceRATScaffolds
 
 This package contains scaffolds used for
-[spaceRAT](https://github.com/XueningHe/spaceRAT). See the package
-vignettes for instructions how to build and use the scaffolds.
+[spaceRAT](https://github.com/shdam/spaceRAT). See the package vignettes
+for instructions how to build and use the scaffolds.
 
 ## Installation
 
@@ -26,7 +26,7 @@ This is a data package. The current `spaceRAT` scaffolds include:
 library("spaceRATScaffolds")
 
 listScaffolds()
-#> [1] "DMAP.v1" "TCGA.v1" "GTEx.v1"
+#> [1] "TCGA.v2" "DMAP.v1" "GTEx.v1" "TCGA.v1"
 
 listDatasets()
 #> [1] "DMAP_exprs"    "DMAP_pData"    "ilaria_counts" "ilaria_pData"
@@ -41,8 +41,26 @@ listConverters()
 scaffold <- getScaffold("DMAP")
 
 # Add versioning to get a specific version:
-scaffold.v1 <- getScaffold("DMAP.v1")
+scaffold.v1 <- getScaffold("DMAP.v1", store = TRUE, path = "scaffolds")
 ```
+
+If you set `store = TRUE`, the scaffold will be stored locally in the
+folder set by `path`. When re-acquiring the scaffold,
+`getScaffold("DMAP.v1", path = "scaffolds")` will load the local
+scaffold instead of downloading from Zenodo.
+
+<!-- 
+### Get scaffolds with SciDataFlow 
+
+The scaffolds are managed with 
+[SciDataFlow](https://github.com/vsbuffalo/scidataflow). 
+If you have it installed, you can download all scaffolds with
+`sdf pull` after cloning the repository.  
+
+This will put the scaffolds in `inst/extdata`. 
+Therefore, set `path = "inst/extdata"` when loading the scaffold 
+with `getScaffold()`. 
+-->
 
 ### Load test data
 
@@ -52,6 +70,11 @@ scaffold.v1 <- getScaffold("DMAP.v1")
 testData <- loadData("DMAP_exprs")
 testPheno <- loadData("DMAP_pData")
 ```
+
+### Using spaceRAT
+
+See [spaceRAT](https://github.com/shdam/spaceRAT) for instructions on
+how to use the scaffolds.
 
 ## Report issues
 
