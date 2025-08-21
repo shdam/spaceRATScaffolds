@@ -105,15 +105,16 @@ GTEx.v1 <- buildScaffold(
   pca_scale = TRUE,
   rank_scale = T,
   # annotation = "ensembl_gene",
-  # add_umap = TRUE
+  add_umap = TRUE
 )
 
 plotScaffold(GTEx.v1,"GTEX PCA scaffold", dimred = "PCA", dims = c(1,2))
+plotScaffold(GTEx.v1,"GTEX PCA scaffold", dimred = "UMAP", dims = c(1,2))
+
 
 # Projection
 data("ilaria_counts", "ilaria_pData", package = "spaceRATScaffolds")
 projectSample(GTEx.v1,ilaria_counts,ilaria_pData,"cancer_type", title = "GTEx", dims = c(1,2), subset_intersection = F)
-
 
 # Save scaffold in extdata to be put on Zenodo
 saveRDS(GTEx.v1, file = "inst/extdata/GTEx.v1.rds")
@@ -142,7 +143,7 @@ GTEx.v2 <- buildScaffold(
     rank_scale = T,
     # annotation = "ensembl_gene",
     #ranking = TRUE
-    # add_umap = TRUE
+    add_umap = TRUE
 )
 plotScaffold(GTEx.v2,"GTEX PCA scaffold", dimred = "PCA", dims = c(1,2))
 
