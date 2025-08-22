@@ -115,6 +115,8 @@ plotScaffold(GTEx.v1,"GTEX PCA scaffold", dimred = "UMAP", dims = c(1,2))
 # Projection
 data("ilaria_counts", "ilaria_pData", package = "spaceRATScaffolds")
 projectSample(GTEx.v1,ilaria_counts,ilaria_pData,"cancer_type", title = "GTEx", dims = c(1,2), subset_intersection = F)
+projectSample(GTEx.v1,ilaria_counts,ilaria_pData,"cancer_type", title = "GTEx", dims = c(1,2), subset_intersection = F, dimred = 'UMAP')
+
 
 # Save scaffold in extdata to be put on Zenodo
 saveRDS(GTEx.v1, file = "inst/extdata/GTEx.v1.rds")

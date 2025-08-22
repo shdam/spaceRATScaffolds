@@ -1,8 +1,8 @@
 files:
-- path: inst/extdata/TCGA.v2.rds
+- path: inst/extdata/GTEx.v1.rds
   tracked: true
-  md5: e247b9b1ecd95fa00b1d2f2bac15cdae
-  size: 15547045
+  md5: 8eefc9bdf6766dc967ff96e854c6658d
+  size: 40102438
   url: null
 - path: inst/extdata/TCGA.v1.rds
   tracked: true
@@ -14,16 +14,16 @@ files:
   md5: 1ffc9181d70a414e75458acd4bddb9f2
   size: 859171
   url: null
-- path: inst/extdata/GTEx.v1.rds
+- path: inst/extdata/TCGA.v2.rds
   tracked: true
-  md5: 8eefc9bdf6766dc967ff96e854c6658d
-  size: 40102438
+  md5: bd93e712d39388391b358c9180016cb3
+  size: 33983234
   url: null
 remotes:
   inst/extdata: !ZenodoAPI
-    name: spaceRAT Scaffolds
-    deposition_id: 10842509
-    bucket_url: https://zenodo.org/api/files/28d576b3-9f94-4c4f-9cbe-54e468817014
+    name: spaceRATScaffolds
+    deposition_id: 16919084
+    bucket_url: https://zenodo.org/api/files/5f7efefa-0174-4777-846e-c06f67f7ec98
 metadata:
   title: spaceRAT Scaffolds
   description: Create and manage scaffolds for spaceRAT

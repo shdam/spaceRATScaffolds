@@ -17,5 +17,16 @@ a spaceRAT scaffold
 \description{
 Scaffold of normal hematopoietic cells.
 The data was measured by microarray.
+**Blood Cell Type Code Reference**
+BASO: Basophil
+CMP:  Common Myeloid Progenitor
+EOS:  Eosinophil
+ERY:  Erythrocyte
+GMP:  Granulocyte-Macrophage Progenitor
+GRAN: Granulocyte
+HSC:  Hematopoietic Stem Cell
+MEGA: Megakaryocyte
+MEP:  Megakaryocyte-Erythroid Progenitor
+MONO: Monocyte
 }
 \keyword{datasets}

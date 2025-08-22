@@ -139,7 +139,7 @@ data("ilaria_counts", "ilaria_pData", package = "spaceRATScaffolds")
 projectSample(TCGA.v2,ilaria_counts,ilaria_pData,"cancer_type", title = "TCGA - 200 genes, lfc=2 -PC1 (1,2)", dims = c(1,2),
               subset_intersection = F)
 
-scaffold <- TCGA.v1
+scaffold <- TCGA.v2
 rownames(scaffold$rank) <- rownames(scaffold$rank) |> 
   stringr::str_remove("_.*")
 
@@ -172,11 +172,11 @@ new_exprs <- tcga_exprs
 
 subset <- "GBM"
 new_exprs <- new_exprs[, tcga_pheno[which(tcga_pheno$study == subset),1, drop =T]]
-projectSample(TCGA.v1,new_exprs, title = paste("TCGA +", subset, "samples"), dims = c(1,2))
+projectSample(TCGA.v2,new_exprs, title = paste("TCGA +", subset, "samples"), dims = c(1,2))
 
 subset <- "Blood"
 new_exprs <- gtex_exprs[, gtex_pheno[which(gtex_pheno$gtex.smts == subset),1, drop =T]]
-projectSample(TCGA.v1,new_exprs, title = paste("TCGA +", subset, "samples"), dims = c(3,4))
+projectSample(TCGA.v2,new_exprs, title = paste("TCGA +", subset, "samples"), dims = c(3,4))
 
 devtools::load_all("../spaceRAT/")
 
