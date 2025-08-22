@@ -9,11 +9,15 @@ DMAP.v1 <- buildScaffold(
     pheno = DMAP_pData,
     colname = "cell_types",
     data = "exprs",
-    add_umap = TRUE
+    # add_umap = TRUE
 )
-# plotScaffold(DMAPv1_scaffold,"DMAP PCA scaffold", dim_reduction = "PCA")
+
+plotScaffold(DMAP.v1,"DMAP PCA scaffold", dimred = "PCA")
+plotScaffold(DMAP.v1,"DMAP PCA scaffold", dimred = "UMAP")
+projectSample(DMAP.v1, ilaria_counts,ilaria_pData,"cancer_type", subset_intersection = F, dimred = 'UMAP')
+
 # Save scaffold in extdata to be put on Zenodo
-saveRDS(DMAP.v1, file = "inst/extdata/DMAP.v1_scaffold.rds")
+saveRDS(DMAP.v1, file = "inst/extdata/DMAP.v1.rds")
 DMAP.v1 <- "DMAP.v1 <- getScaffold('DMAP.v1')"
 usethis::use_data(DMAP.v1, overwrite = TRUE)
 

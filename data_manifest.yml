@@ -1,23 +1,23 @@
 files:
-- path: inst/extdata/GTEx.v1.rds
+- path: inst/extdata/TCGA.v2.rds
   tracked: true
-  md5: 8eefc9bdf6766dc967ff96e854c6658d
-  size: 40102438
+  md5: 0b081e540154e3fbe8ad8c37ba139ea0
+  size: 33639063
   url: null
 - path: inst/extdata/TCGA.v1.rds
   tracked: true
-  md5: 6824aa571d31b3b54e69e89fe035cab8
-  size: 52486899
+  md5: 7e75cd50524d8df6f85e521b78cdb1fb
+  size: 52141269
   url: null
 - path: inst/extdata/DMAP.v1.rds
   tracked: true
-  md5: 1ffc9181d70a414e75458acd4bddb9f2
-  size: 859171
+  md5: 186f1c3620bf529e252064dc65233182
+  size: 1697450
   url: null
-- path: inst/extdata/TCGA.v2.rds
+- path: inst/extdata/GTEx.v1.rds
   tracked: true
-  md5: bd93e712d39388391b358c9180016cb3
-  size: 33983234
+  md5: efa441541c633cf74c22c17ea03fb53c
+  size: 39775417
   url: null
 remotes:
   inst/extdata: !ZenodoAPI

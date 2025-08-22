@@ -8,7 +8,7 @@
 #'
 #' @examples
 #' allScaffolds <- getAllScaffolds()
-getAllScaffolds <- function(doi = "10.5281/zenodo.16919084"){ # UPDATE ZENODO VERSION HERE
+getAllScaffolds <- function(doi = "10.5281/zenodo.16927257"){ # UPDATE ZENODO VERSION HERE "10.5281/zenodo.16919084"
     zen <- zen4R::get_zenodo(doi)
     allScaffolds <- do.call(rbind, lapply(zen$files, function(x) {
         data.frame(
@@ -22,3 +22,7 @@ getAllScaffolds <- function(doi = "10.5281/zenodo.16919084"){ # UPDATE ZENODO VE
     }))
     return(allScaffolds)
 }
+
+
+
+

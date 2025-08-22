@@ -105,7 +105,7 @@ GTEx.v1 <- buildScaffold(
   pca_scale = TRUE,
   rank_scale = T,
   # annotation = "ensembl_gene",
-  add_umap = TRUE
+  # add_umap = TRUE
 )
 
 plotScaffold(GTEx.v1,"GTEX PCA scaffold", dimred = "PCA", dims = c(1,2))
@@ -122,7 +122,6 @@ projectSample(GTEx.v1,ilaria_counts,ilaria_pData,"cancer_type", title = "GTEx", 
 saveRDS(GTEx.v1, file = "inst/extdata/GTEx.v1.rds")
 GTEx.v1 <- "GTEx.v1 <- getScaffold('GTEx.v1')"
 usethis::use_data(GTEx.v1, overwrite = TRUE)
-
 
 
 ## V2 (not finalized) ----

@@ -81,7 +81,7 @@ TCGA.v1 <- buildScaffold(
     rank_scale = TRUE,
     # annotation = "ensembl_gene",
     #ranking = TRUE
-    add_umap = TRUE
+    # add_umap = TRUE
 )
 
 plotScaffold(TCGA.v1, "TCGA PCA scaffold", dimred = "PCA", dims = c(1,2))
@@ -91,6 +91,9 @@ plotScaffold(TCGA.v1, "TCGA PCA scaffold", dimred = "UMAP", dims = c(1,2))
 data("ilaria_counts", "ilaria_pData", package = "spaceRATScaffolds")
 projectSample(TCGA.v1,ilaria_counts,ilaria_pData,"cancer_type", title = "TCGA - 200 genes, lfc=2 -PC1 (1,2)", dims = c(1,2),
               subset_intersection = F)
+
+projectSample(TCGA.v1,ilaria_counts,ilaria_pData,"cancer_type", title = "TCGA - 200 genes, lfc=2 -PC1 (1,2)", dims = c(1,2),
+              subset_intersection = F, dimred = 'UMAP')
 
 
 # Save scaffold in extdata to be put on Zenodo
@@ -125,19 +128,23 @@ TCGA.v2 <- buildScaffold(
   rank_scale = TRUE,
   # annotation = "ensembl_gene",
   #ranking = TRUE
-  add_umap = TRUE
+  # add_umap = TRUE
 )
 
 plotScaffold(TCGA.v2, "TCGA PCA scaffold", dimred = "PCA", dims = c(1,2))
-
-# Save scaffold in extdata to be put on Zenodo
-saveRDS(TCGA.v2, file = "inst/extdata/TCGA.v2.rds")
-TCGA.v2 <- readRDS("inst/extdata/TCGA.v2.rds")
 
 data("ilaria_counts", "ilaria_pData", package = "spaceRATScaffolds")
 
 projectSample(TCGA.v2,ilaria_counts,ilaria_pData,"cancer_type", title = "TCGA - 200 genes, lfc=2 -PC1 (1,2)", dims = c(1,2),
               subset_intersection = F)
+
+projectSample(TCGA.v2,ilaria_counts,ilaria_pData,"cancer_type", title = "TCGA - 200 genes, lfc=2 -PC1 (1,2)", dims = c(1,2),
+              subset_intersection = F, dimred = 'umap')
+
+# Save scaffold in extdata to be put on Zenodo
+# saveRDS(TCGA.v2, file = "inst/extdata/TCGA.v2.rds")
+# TCGA.v2 <- readRDS("inst/extdata/TCGA.v2.rds")
+
 
 scaffold <- TCGA.v2
 rownames(scaffold$rank) <- rownames(scaffold$rank) |> 
