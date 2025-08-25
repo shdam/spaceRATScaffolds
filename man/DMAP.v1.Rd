@@ -15,18 +15,22 @@ Raw data available at:
 a spaceRAT scaffold
 }
 \description{
-Scaffold of normal hematopoietic cells.
-The data was measured by microarray.
-**Blood Cell Type Code Reference**
-BASO: Basophil
-CMP:  Common Myeloid Progenitor
-EOS:  Eosinophil
-ERY:  Erythrocyte
-GMP:  Granulocyte-Macrophage Progenitor
-GRAN: Granulocyte
-HSC:  Hematopoietic Stem Cell
-MEGA: Megakaryocyte
-MEP:  Megakaryocyte-Erythroid Progenitor
-MONO: Monocyte
+Scaffold of normal hematopoietic cells. 
+The data was measured by microarray. \cr
+\cr
+Blood Cell Type Code Reference \cr
+\itemize{
+  \item BASO: Basophil
+  \item BASO: Basophil 
+  \item CMP:  Common Myeloid Progenitor
+  \item EOS:  Eosinophil 
+  \item ERY:  Erythrocyte 
+  \item GMP:  Granulocyte-Macrophage Progenitor
+  \item GRAN: Granulocyte
+  \item HSC:  Hematopoietic Stem Cell 
+  \item MEGA: Megakaryocyte 
+  \item MEP:  Megakaryocyte-Erythroid Progenitor
+  \item MONO: Monocyte
+  }
 }
 \keyword{datasets}

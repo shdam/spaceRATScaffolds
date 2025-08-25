@@ -15,40 +15,43 @@ Raw data available at:
 a spaceRAT scaffold
 }
 \description{
-A spaceRAT scaffold of The Cancer Genome Atlas.
-**TCGA Cancer Type Code Reference**
-ACC:  Adrenocortical carcinoma
-BLCA: Bladder Urothelial Carcinoma
-BRCA: Breast invasive carcinoma
-CESC: Cervical squamous cell carcinoma and endocervical adenocarcinoma
-CHOL: Cholangiocarcinoma
-COAD: Colon adenocarcinoma
-DLBC: Lymphoid Neoplasm Diffuse Large B-cell Lymphoma
-ESCA: Esophageal carcinoma
-GBM:  Glioblastoma multiforme
-HNSC: Head and Neck squamous cell carcinoma
-KICH: Kidney Chromophobe
-KIRC: Kidney renal clear cell carcinoma
-KIRP: Kidney renal papillary cell carcinoma
-LAML: Acute Myeloid Leukemia
-LGG:  Brain Lower Grade Glioma
-LIHC: Liver hepatocellular carcinoma
-LUAD: Lung adenocarcinoma
-LUSC: Lung squamous cell carcinoma
-MESO: Mesothelioma
-OV:   Ovarian serous cystadenocarcinoma
-PAAD: Pancreatic adenocarcinoma
-PCPG: Pheochromocytoma and Paraganglioma
-PRAD: Prostate adenocarcinoma
-READ: Rectum adenocarcinoma
-SARC: Sarcoma
-SKCM: Skin Cutaneous Melanoma
-STAD: Stomach adenocarcinoma
-TGCT: Testicular Germ Cell Tumors
-THCA: Thyroid carcinoma
-THYM: Thymoma
-UCEC: Uterine Corpus Endometrial Carcinoma
-UCS:  Uterine Carcinosarcoma
-UVM:  Uveal Melanoma
+A spaceRAT scaffold of The Cancer Genome Atlas. \cr
+\cr
+TCGA Cancer Type Code Reference \cr
+\itemize{
+  \item ACC: Adrenocortical carcinoma
+  \item BLCA: Bladder Urothelial Carcinoma
+  \item BRCA: Breast invasive carcinoma
+  \item CESC: Cervical squamous cell carcinoma and endocervical adenocarcinoma
+  \item CHOL: Cholangiocarcinoma
+  \item COAD: Colon adenocarcinoma
+  \item DLBC: Lymphoid Neoplasm Diffuse Large B-cell Lymphoma
+  \item ESCA: Esophageal carcinoma
+  \item GBM: Glioblastoma multiforme
+  \item HNSC: Head and Neck squamous cell carcinoma
+  \item KICH: Kidney Chromophobe
+  \item KIRC: Kidney renal clear cell carcinoma
+  \item KIRP: Kidney renal papillary cell carcinoma
+  \item LAML: Acute Myeloid Leukemia
+  \item LGG: Brain Lower Grade Glioma
+  \item LIHC: Liver hepatocellular carcinoma
+  \item LUAD: Lung adenocarcinoma
+  \item LUSC: Lung squamous cell carcinoma
+  \item MESO: Mesothelioma
+  \item OV: Ovarian serous cystadenocarcinoma
+  \item PAAD: Pancreatic adenocarcinoma
+  \item PCPG: Pheochromocytoma and Paraganglioma
+  \item PRAD: Prostate adenocarcinoma
+  \item READ: Rectum adenocarcinoma
+  \item SARC: Sarcoma
+  \item SKCM: Skin Cutaneous Melanoma
+  \item STAD: Stomach adenocarcinoma
+  \item TGCT: Testicular Germ Cell Tumors
+  \item THCA: Thyroid carcinoma
+  \item THYM: Thymoma
+  \item UCEC: Uterine Corpus Endometrial Carcinoma
+  \item UCS: Uterine Carcinosarcoma
+  \item UVM: Uveal Melanoma
+}
 }
 \keyword{datasets}

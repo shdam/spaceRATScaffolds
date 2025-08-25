@@ -23,19 +23,23 @@
 #' @title  DMAP scaffold version 1
 #' @source Raw data available at:
 #' \url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE24759}
-#' @description Scaffold of normal hematopoietic cells.
-#' The data was measured by microarray.
-#' **Blood Cell Type Code Reference**
-#' BASO: Basophil
-#' CMP:  Common Myeloid Progenitor
-#' EOS:  Eosinophil
-#' ERY:  Erythrocyte
-#' GMP:  Granulocyte-Macrophage Progenitor
-#' GRAN: Granulocyte
-#' HSC:  Hematopoietic Stem Cell
-#' MEGA: Megakaryocyte
-#' MEP:  Megakaryocyte-Erythroid Progenitor
-#' MONO: Monocyte
+#' @description Scaffold of normal hematopoietic cells. 
+#' The data was measured by microarray. \cr
+#' \cr
+#' Blood Cell Type Code Reference: \cr
+#' \itemize{
+#'   \item BASO: Basophil
+#'   \item BASO: Basophil 
+#'   \item CMP:  Common Myeloid Progenitor
+#'   \item EOS:  Eosinophil 
+#'   \item ERY:  Erythrocyte 
+#'   \item GMP:  Granulocyte-Macrophage Progenitor
+#'   \item GRAN: Granulocyte
+#'   \item HSC:  Hematopoietic Stem Cell 
+#'   \item MEGA: Megakaryocyte 
+#'   \item MEP:  Megakaryocyte-Erythroid Progenitor
+#'   \item MONO: Monocyte
+#'   }
 #' @usage NULL
 #' @docType data
 #' @format a spaceRAT scaffold
